@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "314AB3051DD66E660024B6A3"
-               BuildableName = "libMetalKitPlus.dylib"
+               BlueprintIdentifier = "31E00C7D1DD8F12B00C47BE5"
+               BuildableName = "MetalKitPlus.framework"
                BlueprintName = "MetalKitPlus"
                ReferencedContainer = "container:MetalKitPlus.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "314AB3051DD66E660024B6A3"
-            BuildableName = "libMetalKitPlus.dylib"
+            BlueprintIdentifier = "31E00C7D1DD8F12B00C47BE5"
+            BuildableName = "MetalKitPlus.framework"
             BlueprintName = "MetalKitPlus"
             ReferencedContainer = "container:MetalKitPlus.xcodeproj">
          </BuildableReference>
@@ -63,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "314AB3051DD66E660024B6A3"
-            BuildableName = "libMetalKitPlus.dylib"
+            BlueprintIdentifier = "31E00C7D1DD8F12B00C47BE5"
+            BuildableName = "MetalKitPlus.framework"
             BlueprintName = "MetalKitPlus"
             ReferencedContainer = "container:MetalKitPlus.xcodeproj">
          </BuildableReference>
