@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		314AB30A1DD66E660024B6A3 /* MetalKitPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 314AB3091DD66E660024B6A3 /* MetalKitPlus.h */; };
-		314AB30C1DD66E660024B6A3 /* MetalKitPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 314AB30B1DD66E660024B6A3 /* MetalKitPlus.m */; };
+		314AB3171DD66F110024B6A3 /* MTKAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB3121DD66F110024B6A3 /* MTKAssets.swift */; };
+		314AB3181DD66F110024B6A3 /* MTKFunctionExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB3131DD66F110024B6A3 /* MTKFunctionExecutor.swift */; };
+		314AB3191DD66F110024B6A3 /* MTKPipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB3141DD66F110024B6A3 /* MTKPipelineStateDescriptor.swift */; };
+		314AB31A1DD66F110024B6A3 /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB3151DD66F110024B6A3 /* MTKRenderer.swift */; };
+		314AB31B1DD66F110024B6A3 /* MTKRenderPipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB3161DD66F110024B6A3 /* MTKRenderPipelineStateDescriptor.swift */; };
+		314AB31D1DD66F4D0024B6A3 /* MTKMeshDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB31C1DD66F4D0024B6A3 /* MTKMeshDescriptor.swift */; };
+		31E00C4D1DD8E8FA00C47BE5 /* MTKComputer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00C4C1DD8E8FA00C47BE5 /* MTKComputer.swift */; };
+		31E00C4F1DD8E97D00C47BE5 /* MTKFunctionArrayExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00C4E1DD8E97D00C47BE5 /* MTKFunctionArrayExecutor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		314AB3061DD66E660024B6A3 /* libMetalKitPlus.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMetalKitPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		314AB3091DD66E660024B6A3 /* MetalKitPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalKitPlus.h; sourceTree = "<group>"; };
-		314AB30B1DD66E660024B6A3 /* MetalKitPlus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalKitPlus.m; sourceTree = "<group>"; };
+		314AB3121DD66F110024B6A3 /* MTKAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKAssets.swift; sourceTree = "<group>"; };
+		314AB3131DD66F110024B6A3 /* MTKFunctionExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKFunctionExecutor.swift; sourceTree = "<group>"; };
+		314AB3141DD66F110024B6A3 /* MTKPipelineStateDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKPipelineStateDescriptor.swift; sourceTree = "<group>"; };
+		314AB3151DD66F110024B6A3 /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
+		314AB3161DD66F110024B6A3 /* MTKRenderPipelineStateDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderPipelineStateDescriptor.swift; sourceTree = "<group>"; };
+		314AB31C1DD66F4D0024B6A3 /* MTKMeshDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKMeshDescriptor.swift; sourceTree = "<group>"; };
+		31E00C4C1DD8E8FA00C47BE5 /* MTKComputer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKComputer.swift; sourceTree = "<group>"; };
+		31E00C4E1DD8E97D00C47BE5 /* MTKFunctionArrayExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKFunctionArrayExecutor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +59,14 @@
 		314AB3081DD66E660024B6A3 /* MetalKitPlus */ = {
 			isa = PBXGroup;
 			children = (
-				314AB3091DD66E660024B6A3 /* MetalKitPlus.h */,
-				314AB30B1DD66E660024B6A3 /* MetalKitPlus.m */,
+				314AB31C1DD66F4D0024B6A3 /* MTKMeshDescriptor.swift */,
+				314AB3121DD66F110024B6A3 /* MTKAssets.swift */,
+				314AB3131DD66F110024B6A3 /* MTKFunctionExecutor.swift */,
+				31E00C4E1DD8E97D00C47BE5 /* MTKFunctionArrayExecutor.swift */,
+				31E00C4C1DD8E8FA00C47BE5 /* MTKComputer.swift */,
+				314AB3141DD66F110024B6A3 /* MTKPipelineStateDescriptor.swift */,
+				314AB3151DD66F110024B6A3 /* MTKRenderer.swift */,
+				314AB3161DD66F110024B6A3 /* MTKRenderPipelineStateDescriptor.swift */,
 			);
 			path = MetalKitPlus;
 			sourceTree = "<group>";
@@ -60,7 +78,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				314AB30A1DD66E660024B6A3 /* MetalKitPlus.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +113,7 @@
 					314AB3051DD66E660024B6A3 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 352B6MP4DK;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -122,7 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				314AB30C1DD66E660024B6A3 /* MetalKitPlus.m in Sources */,
+				314AB3191DD66F110024B6A3 /* MTKPipelineStateDescriptor.swift in Sources */,
+				31E00C4F1DD8E97D00C47BE5 /* MTKFunctionArrayExecutor.swift in Sources */,
+				314AB31B1DD66F110024B6A3 /* MTKRenderPipelineStateDescriptor.swift in Sources */,
+				314AB3171DD66F110024B6A3 /* MTKAssets.swift in Sources */,
+				31E00C4D1DD8E8FA00C47BE5 /* MTKComputer.swift in Sources */,
+				314AB31D1DD66F4D0024B6A3 /* MTKMeshDescriptor.swift in Sources */,
+				314AB3181DD66F110024B6A3 /* MTKFunctionExecutor.swift in Sources */,
+				314AB31A1DD66F110024B6A3 /* MTKRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,22 +244,29 @@
 		314AB3101DD66E660024B6A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 352B6MP4DK;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		314AB3111DD66E660024B6A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 352B6MP4DK;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -257,6 +289,7 @@
 				314AB3111DD66E660024B6A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
