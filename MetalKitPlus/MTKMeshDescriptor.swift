@@ -12,12 +12,12 @@ import MetalKit
 import ModelIO
 
 public class MTKMeshDescriptor {
-    var vertexBuffer: MTLBuffer
-    var vertexDescriptor: MTLVertexDescriptor
-    var primitiveType: MTLPrimitiveType
-    var indexBuffer: MTLBuffer
-    var indexCount: Int
-    var indexType: MTLIndexType
+    public var vertexBuffer: MTLBuffer
+    public var vertexDescriptor: MTLVertexDescriptor
+    public var primitiveType: MTLPrimitiveType
+    public var indexBuffer: MTLBuffer
+    public var indexCount: Int
+    public var indexType: MTLIndexType
     
     public init?(cubeWithSize size: Float, device: MTLDevice)
     {
