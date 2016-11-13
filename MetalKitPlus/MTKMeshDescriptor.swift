@@ -11,7 +11,7 @@ import Metal
 import MetalKit
 import ModelIO
 
-class MTKMeshDescriptor {
+public class MTKMeshDescriptor {
     var vertexBuffer: MTLBuffer
     var vertexDescriptor: MTLVertexDescriptor
     var primitiveType: MTLPrimitiveType
@@ -19,7 +19,7 @@ class MTKMeshDescriptor {
     var indexCount: Int
     var indexType: MTLIndexType
     
-    init?(cubeWithSize size: Float, device: MTLDevice)
+    public init?(cubeWithSize size: Float, device: MTLDevice)
     {
         let allocator = MTKMeshBufferAllocator(device: device)
         

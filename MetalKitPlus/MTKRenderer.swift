@@ -12,6 +12,6 @@ import MetalKit
  * All renderers should be able to draw to an MTKView.
  */
 
-protocol MTKRenderer : MTKViewDelegate {
+public protocol MTKRenderer : MTKViewDelegate {
     init?(with view:MTKView)
 }

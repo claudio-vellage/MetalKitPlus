@@ -8,7 +8,7 @@
 
 import Metal
 
-protocol MTKFunctionExecutor {
+public protocol MTKFunctionExecutor {
     var commandQueue:MTLCommandQueue { get }
     
     func execute(_ functionName:String)

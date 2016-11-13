@@ -8,16 +8,16 @@
 
 import Metal
 
-struct MTKRenderPipelineStateDescriptor : MTKPipelineStateDescriptor {
-    let state:MTLRenderPipelineState
-    let tgSize:(Int, Int, Int)
-    let depthStencilState:MTLDepthStencilState
-    let textures:[MTLTexture]?
-    let buffers:[MTLBuffer]?
-    let samplers:[MTLSamplerState]?
-    let meshes:[MTKMeshDescriptor]?
+public struct MTKRenderPipelineStateDescriptor : MTKPipelineStateDescriptor {
+    public let state:MTLRenderPipelineState
+    public let tgSize:(Int, Int, Int)
+    public let depthStencilState:MTLDepthStencilState
+    public let textures:[MTLTexture]?
+    public let buffers:[MTLBuffer]?
+    public let samplers:[MTLSamplerState]?
+    public let meshes:[MTKMeshDescriptor]?
     
-    init (state:MTLRenderPipelineState,
+    public init (state:MTLRenderPipelineState,
           tgSize:(Int,Int,Int),
           depthStencilState:MTLDepthStencilState,
           textures:[MTLTexture]? = nil,

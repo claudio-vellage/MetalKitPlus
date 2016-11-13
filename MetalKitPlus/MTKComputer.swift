@@ -8,10 +8,10 @@
 
 import Metal
 
-class MTKComputer {
-    private let commandQueue:MTLCommandQueue
+open class MTKComputer {
+    public let commandQueue:MTLCommandQueue
     
-    required init(commandQueue:MTLCommandQueue) {
+    public init(commandQueue:MTLCommandQueue) {
         self.commandQueue = commandQueue
     }
 }

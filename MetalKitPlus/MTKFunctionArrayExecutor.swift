@@ -8,6 +8,6 @@
 
 import Metal
 
-protocol MTKFunctionArrayExecutor : MTKFunctionExecutor {
+public protocol MTKFunctionArrayExecutor : MTKFunctionExecutor {
     func execute(_ functionName:[String])
 }
