@@ -19,12 +19,8 @@ public class MTKMeshDescriptor {
     public var indexCount: Int
     public var indexType: MTLIndexType
     
-    public init?(cubeWithSize size: Float)
-    {
-        guard let device = MTKDevices.renderDevice else {
-            fatalError("The global _renderDevice_ was nil.")
-        }
-        
+    public init?(device:MTLDevice, cubeWithSize size: Float)
+    {        
         let allocator = MTKMeshBufferAllocator(device: device)
         
         let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),
