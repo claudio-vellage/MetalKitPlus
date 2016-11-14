@@ -18,7 +18,7 @@ import MetalKit
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
-open class MTKShaderAssetsIO {
+open class MTKShaderIO {
     public let device:MTLDevice
     public let textureLoader:MTKTextureLoader
     
