@@ -17,6 +17,7 @@
 		31E00CAA1DD8F2DF00C47BE5 /* MTKPipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA21DD8F2DF00C47BE5 /* MTKPipelineStateDescriptor.swift */; };
 		31E00CAB1DD8F2DF00C47BE5 /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA31DD8F2DF00C47BE5 /* MTKRenderer.swift */; };
 		31E00CAC1DD8F2DF00C47BE5 /* MTKRenderPipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA41DD8F2DF00C47BE5 /* MTKRenderPipelineStateDescriptor.swift */; };
+		31E7EFAA1DD986CC00C9BE01 /* MTKShaderAssetsIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E7EFA91DD986CC00C9BE01 /* MTKShaderAssetsIO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		31E00CA21DD8F2DF00C47BE5 /* MTKPipelineStateDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKPipelineStateDescriptor.swift; sourceTree = "<group>"; };
 		31E00CA31DD8F2DF00C47BE5 /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
 		31E00CA41DD8F2DF00C47BE5 /* MTKRenderPipelineStateDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderPipelineStateDescriptor.swift; sourceTree = "<group>"; };
+		31E7EFA91DD986CC00C9BE01 /* MTKShaderAssetsIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKShaderAssetsIO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		31E00C801DD8F12B00C47BE5 /* MetalKitPlus */ = {
 			isa = PBXGroup;
 			children = (
+				31E7EFA91DD986CC00C9BE01 /* MTKShaderAssetsIO.swift */,
 				31E00C9D1DD8F2DF00C47BE5 /* MTKAssets.swift */,
 				31E00C9E1DD8F2DF00C47BE5 /* MTKComputer.swift */,
 				311415B81DD907C300D35403 /* MTKComputePipelineStateDescriptor.swift */,
@@ -166,6 +169,7 @@
 				31E00CAC1DD8F2DF00C47BE5 /* MTKRenderPipelineStateDescriptor.swift in Sources */,
 				311415B91DD907C300D35403 /* MTKComputePipelineStateDescriptor.swift in Sources */,
 				31E00CA91DD8F2DF00C47BE5 /* MTKMeshDescriptor.swift in Sources */,
+				31E7EFAA1DD986CC00C9BE01 /* MTKShaderAssetsIO.swift in Sources */,
 				31E00CA81DD8F2DF00C47BE5 /* MTKFunctionExecutor.swift in Sources */,
 				31E00CA61DD8F2DF00C47BE5 /* MTKComputer.swift in Sources */,
 				31E00CA71DD8F2DF00C47BE5 /* MTKFunctionArrayExecutor.swift in Sources */,
