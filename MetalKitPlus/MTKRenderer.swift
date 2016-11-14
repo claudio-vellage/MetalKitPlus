@@ -12,5 +12,5 @@ import MetalKit
  * All renderers must be delegates of an MTKView.
  */
 public protocol MTKRenderer : MTKViewDelegate {
-    init?(with view:MTKView)
+    init?(device:MTLDevice, with view:MTKView)
 }
