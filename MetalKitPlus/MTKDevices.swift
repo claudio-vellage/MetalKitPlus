@@ -9,7 +9,7 @@
 import Metal
 
 public struct MTKDevices {
-    static var computeDevice:MTLDevice? {
+    public static var computeDevice:MTLDevice? {
         get {
             return self.computeDevice ?? MTLCreateSystemDefaultDevice()
         }
@@ -19,7 +19,7 @@ public struct MTKDevices {
         }
     }
     
-    static var renderDevice:MTLDevice? {
+    public static var renderDevice:MTLDevice? {
         get {
             return self.renderDevice ?? MTLCreateSystemDefaultDevice()
         }
