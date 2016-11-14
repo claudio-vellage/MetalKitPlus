@@ -8,6 +8,9 @@
 
 import Metal
 
+/**
+    Bundles all resources for fragment and vertex shaders.
+ */
 public struct MTKRenderPipelineStateDescriptor : MTKPipelineStateDescriptor {
     public let state:MTLRenderPipelineState
     public let tgSize:(Int, Int, Int)

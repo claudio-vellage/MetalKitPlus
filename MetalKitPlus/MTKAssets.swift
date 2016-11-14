@@ -8,27 +8,28 @@
 
 import Metal
 
-/*
- * MTKAssets defines a protocol to store MTKPipelineStateDescriptors
- * in a dictionary and make them accessible via the subscript operator.
- *
- * MTKAssets are supposed to aid the organization of assets belonging to
- * a certain group of shaders (e.g. MTKHdrAssets, MTKDenoiseAssets) by
- * enabling the user to retrieve all the required assets 
- * (textures, buffers etc.) through the MTKPipelineStateDescriptor
- * by using the subscript operator with the associated function name.
- *
- * This is used to easy the execution of functions via an execute command
- * of an MTKComputer:
- *
- * let hdrAssets = MTKHdrAssets(args...)
- * let hdrComputer = MTKComputer(commandQueue,hdrAssets)
- *
- * hdrComputer.execute("tonemapping")
- *
- * where tonemapping has been initialized inside MTKHdrAssets.
+/**
+    MTKAssets defines a protocol to store MTKPipelineStateDescriptors
+    in a dictionary and make them accessible via the subscript operator.
+ 
+    MTKAssets are supposed to aid the organization of assets belonging to
+    a certain group of shaders (e.g. MTKHdrAssets, MTKDenoiseAssets) by
+    enabling the user to retrieve all the required assets
+    (textures, buffers etc.) through the MTKPipelineStateDescriptor
+    by using the subscript operator with the associated function name.
+ 
+    This is used to ease the execution of functions via an execute command
+    of an `MTKComputer`:
+ 
+    ```
+    let hdrAssets = MTKHdrAssets(args...)
+    let hdrComputer = MTKComputer(commandQueue,hdrAssets)
+ 
+    hdrComputer.execute("tonemapping")
+    ```
+ 
+    where tonemapping has been initialized inside MTKHdrAssets.
  */
-
 public protocol MTKAssets : class {
     var dictionary:Dictionary<String,MTKPipelineStateDescriptor> { get set }
     

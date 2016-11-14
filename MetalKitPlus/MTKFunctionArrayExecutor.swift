@@ -8,6 +8,13 @@
 
 import Metal
 
+/**
+    This protocol should be used to create an `MTLComputer` that can execute
+    one or multiple shaders.
+
+ */
 public protocol MTKFunctionArrayExecutor : MTKFunctionExecutor {
+    
+    /// - parameter functionName: List of names of entries in MTKAssets.
     func execute(_ functionName:[String])
 }

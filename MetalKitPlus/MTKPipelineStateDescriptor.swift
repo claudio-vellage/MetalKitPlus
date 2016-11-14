@@ -8,13 +8,12 @@
 
 import Metal
 
-/*
+/**
  * MTKPipelineStateDescriptor defines a protocol for
  * classes that store threadgroup size, textures, buffers
  * and samplers. These MTKPipelineStateDescriptors are
  * supposed to be stored in a dictionary inside MTKAssets.
  */
-
 public protocol MTKPipelineStateDescriptor {
     var tgSize:(Int,Int,Int) { get }
     var textures:[MTLTexture]? { get }

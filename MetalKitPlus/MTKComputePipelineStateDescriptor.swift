@@ -8,6 +8,9 @@
 
 import Metal
 
+/**
+    Bundles all resources for shader kernels.
+ */
 public struct MTKComputePipelineStateDescriptor : MTKPipelineStateDescriptor {
     public let state:MTLComputePipelineState
     public let tgSize:(Int,Int,Int)

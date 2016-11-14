@@ -9,23 +9,33 @@
 import Metal
 import MetalKit
 
-/*
- * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- * As of now, a segfault occurs when trying to subclass
- * this class in a project. To resolve this problem
- * simply copy this file over to your project.
- * Let's hope, Apple will try and resolve this bug.
- * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
+ This class handles IO operations (i.e. texture and buffer allocation)
+ on a given `MTLDevice`.
+ 
+ - todo: Move this class to .framework once Apple resolved the segfault bug.
+ - requires: `MTLDevice`
  */
-
 open class MTKShaderIO {
+    /// Our Textures and Buffers will be stored on this device.
     public let device:MTLDevice
+    
+    /// Used to load textures for our device.
     public let textureLoader:MTKTextureLoader
     
-    open lazy var fetchTextures: (() -> [MTLTexture]?)? = nil
-    open lazy var fetchBuffers: (() -> [MTLBuffer]?)? = nil
+    /// Should handle texture related IO operations.
+    public lazy var fetchTextures: (() -> [MTLTexture]?)? = nil
     
-    public init(device:MTLDevice) {
+    /// Should handle buffer related IO operations.
+    public lazy var fetchBuffers: (() -> [MTLBuffer]?)? = nil
+    
+    /**
+     Constructor
+     
+     - parameters:
+     - device: Device used for IO operations.
+     */
+    public required init(device:MTLDevice) {
         self.device = device
         self.textureLoader = MTKTextureLoader(device: device)
     }
