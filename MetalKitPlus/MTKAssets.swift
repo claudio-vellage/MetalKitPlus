@@ -34,6 +34,12 @@ open class MTKAssets {
     private var dictionary:Dictionary<String,MTKPipelineStateDescriptor> = [:]
     
     public subscript(key:String) -> MTKPipelineStateDescriptor? {
-        return dictionary[key]
+        get {
+            return dictionary[key]
+        }
+        
+        set(pipelineStateDescriptor) {
+            dictionary[key] = pipelineStateDescriptor
+        }
     }
 }
