@@ -30,8 +30,10 @@ import Metal
  
     where tonemapping has been initialized inside MTKHdrAssets.
  */
-public protocol MTKAssets : class {
-    var dictionary:Dictionary<String,MTKPipelineStateDescriptor> { get set }
+open class MTKAssets {
+    private var dictionary:Dictionary<String,MTKPipelineStateDescriptor> = [:]
     
-    subscript(key:String) -> MTKPipelineStateDescriptor? { get }
+    subscript(key:String) -> MTKPipelineStateDescriptor? {
+        return dictionary[key]
+    }
 }
