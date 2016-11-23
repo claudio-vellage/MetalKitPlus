@@ -33,7 +33,7 @@ import Metal
 open class MTKAssets {
     private var dictionary:Dictionary<String,MTKPipelineStateDescriptor> = [:]
     
-    subscript(key:String) -> MTKPipelineStateDescriptor? {
+    public subscript(key:String) -> MTKPipelineStateDescriptor? {
         return dictionary[key]
     }
 }
