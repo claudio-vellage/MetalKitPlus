@@ -24,10 +24,10 @@ open class MTKShaderIO {
     public let textureLoader:MTKTextureLoader
     
     /// Should handle texture related IO operations.
-    public lazy var textures: [MTLTexture]? = nil
+    public lazy var fetchTextures: (() -> [MTLTexture]?)? = nil
     
     /// Should handle buffer related IO operations.
-    public lazy var buffers: [MTLBuffer]? = nil
+    public lazy var fetchBuffers: (() -> [MTLBuffer]?)? = nil
     
     /**
      Constructor
