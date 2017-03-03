@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		311415B91DD907C300D35403 /* MTKComputePipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311415B81DD907C300D35403 /* MTKComputePipelineStateDescriptor.swift */; };
+		31BBCFDB1E69CF5700C8B718 /* MTKDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BBCFDA1E69CF5700C8B718 /* MTKDevice.swift */; };
+		31BBCFE31E6A061400C8B718 /* MetalKitPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BBCFE21E6A061400C8B718 /* MetalKitPlusTests.swift */; };
+		31BBCFE51E6A061400C8B718 /* MetalKitPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E00C7E1DD8F12B00C47BE5 /* MetalKitPlus.framework */; };
+		31BBCFEC1E6A064200C8B718 /* MTKDeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BBCFEB1E6A064200C8B718 /* MTKDeviceTests.swift */; };
+		31BBCFF01E6A0E4D00C8B718 /* MTKDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BBCFDA1E69CF5700C8B718 /* MTKDevice.swift */; };
 		31E00C831DD8F12B00C47BE5 /* MetalKitPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 31E00C811DD8F12B00C47BE5 /* MetalKitPlus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31E00CA51DD8F2DF00C47BE5 /* MTKAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00C9D1DD8F2DF00C47BE5 /* MTKAssets.swift */; };
 		31E00CA61DD8F2DF00C47BE5 /* MTKComputer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00C9E1DD8F2DF00C47BE5 /* MTKComputer.swift */; };
@@ -18,8 +23,25 @@
 		31E7EFAA1DD986CC00C9BE01 /* MTKShaderIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E7EFA91DD986CC00C9BE01 /* MTKShaderIO.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		31BBCFE61E6A061400C8B718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31E00C751DD8F12B00C47BE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31E00C7D1DD8F12B00C47BE5;
+			remoteInfo = MetalKitPlus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		311415B81DD907C300D35403 /* MTKComputePipelineStateDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKComputePipelineStateDescriptor.swift; sourceTree = "<group>"; };
+		31BBCFCF1E69C9C100C8B718 /* MetalKitPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalKitPlusTests.swift; sourceTree = "<group>"; };
+		31BBCFD11E69C9C100C8B718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BBCFDA1E69CF5700C8B718 /* MTKDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKDevice.swift; sourceTree = "<group>"; };
+		31BBCFE01E6A061400C8B718 /* MetalKitPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalKitPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		31BBCFE21E6A061400C8B718 /* MetalKitPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalKitPlusTests.swift; sourceTree = "<group>"; };
+		31BBCFE41E6A061400C8B718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BBCFEB1E6A064200C8B718 /* MTKDeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTKDeviceTests.swift; path = ../MTKDeviceTests.swift; sourceTree = "<group>"; };
 		31E00C7E1DD8F12B00C47BE5 /* MetalKitPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetalKitPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E00C811DD8F12B00C47BE5 /* MetalKitPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalKitPlus.h; sourceTree = "<group>"; };
 		31E00C821DD8F12B00C47BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,6 +55,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		31BBCFDD1E6A061400C8B718 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BBCFE51E6A061400C8B718 /* MetalKitPlus.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31E00C7A1DD8F12B00C47BE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +73,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				31BBCFEB1E6A064200C8B718 /* MTKDeviceTests.swift */,
+				31BBCFCF1E69C9C100C8B718 /* MetalKitPlusTests.swift */,
+				31BBCFD11E69C9C100C8B718 /* Info.plist */,
+			);
+			path = MetalKitPlusTests;
+			sourceTree = "<group>";
+		};
+		31BBCFE11E6A061400C8B718 /* MetalKitPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				31BBCFE21E6A061400C8B718 /* MetalKitPlusTests.swift */,
+				31BBCFE41E6A061400C8B718 /* Info.plist */,
+			);
+			path = MetalKitPlusTests;
+			sourceTree = "<group>";
+		};
 		31E00C741DD8F12B00C47BE5 = {
 			isa = PBXGroup;
 			children = (
 				31E00C801DD8F12B00C47BE5 /* MetalKitPlus */,
+				31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */,
+				31BBCFE11E6A061400C8B718 /* MetalKitPlusTests */,
 				31E00C7F1DD8F12B00C47BE5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				31E00C7E1DD8F12B00C47BE5 /* MetalKitPlus.framework */,
+				31BBCFE01E6A061400C8B718 /* MetalKitPlusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +124,7 @@
 				31E00CA31DD8F2DF00C47BE5 /* MTKRenderer.swift */,
 				31E00C811DD8F12B00C47BE5 /* MetalKitPlus.h */,
 				31E00C821DD8F12B00C47BE5 /* Info.plist */,
+				31BBCFDA1E69CF5700C8B718 /* MTKDevice.swift */,
 			);
 			path = MetalKitPlus;
 			sourceTree = "<group>";
@@ -90,6 +143,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		31BBCFDF1E6A061400C8B718 /* MetalKitPlusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31BBCFE81E6A061400C8B718 /* Build configuration list for PBXNativeTarget "MetalKitPlusTests" */;
+			buildPhases = (
+				31BBCFDC1E6A061400C8B718 /* Sources */,
+				31BBCFDD1E6A061400C8B718 /* Frameworks */,
+				31BBCFDE1E6A061400C8B718 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31BBCFE71E6A061400C8B718 /* PBXTargetDependency */,
+			);
+			name = MetalKitPlusTests;
+			productName = MetalKitPlusTests;
+			productReference = 31BBCFE01E6A061400C8B718 /* MetalKitPlusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		31E00C7D1DD8F12B00C47BE5 /* MetalKitPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31E00C861DD8F12B00C47BE5 /* Build configuration list for PBXNativeTarget "MetalKitPlus" */;
@@ -114,9 +185,15 @@
 		31E00C751DD8F12B00C47BE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Claudio Vellage";
 				TargetAttributes = {
+					31BBCFDF1E6A061400C8B718 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 352B6MP4DK;
+						ProvisioningStyle = Automatic;
+					};
 					31E00C7D1DD8F12B00C47BE5 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 352B6MP4DK;
@@ -138,11 +215,19 @@
 			projectRoot = "";
 			targets = (
 				31E00C7D1DD8F12B00C47BE5 /* MetalKitPlus */,
+				31BBCFDF1E6A061400C8B718 /* MetalKitPlusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		31BBCFDE1E6A061400C8B718 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31E00C7C1DD8F12B00C47BE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +238,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		31BBCFDC1E6A061400C8B718 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BBCFEC1E6A064200C8B718 /* MTKDeviceTests.swift in Sources */,
+				31BBCFE31E6A061400C8B718 /* MetalKitPlusTests.swift in Sources */,
+				31BBCFF01E6A0E4D00C8B718 /* MTKDevice.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31E00C791DD8F12B00C47BE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,12 +260,47 @@
 				31E00CA91DD8F2DF00C47BE5 /* MTKMeshDescriptor.swift in Sources */,
 				31E7EFAA1DD986CC00C9BE01 /* MTKShaderIO.swift in Sources */,
 				31E00CA61DD8F2DF00C47BE5 /* MTKComputer.swift in Sources */,
+				31BBCFDB1E69CF5700C8B718 /* MTKDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		31BBCFE71E6A061400C8B718 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31E00C7D1DD8F12B00C47BE5 /* MetalKitPlus */;
+			targetProxy = 31BBCFE61E6A061400C8B718 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		31BBCFE91E6A061400C8B718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 352B6MP4DK;
+				INFOPLIST_FILE = MetalKitPlusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.MetalKitPlusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		31BBCFEA1E6A061400C8B718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 352B6MP4DK;
+				INFOPLIST_FILE = MetalKitPlusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.MetalKitPlusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		31E00C841DD8F12B00C47BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -317,6 +447,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		31BBCFE81E6A061400C8B718 /* Build configuration list for PBXNativeTarget "MetalKitPlusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BBCFE91E6A061400C8B718 /* Debug */,
+				31BBCFEA1E6A061400C8B718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		31E00C781DD8F12B00C47BE5 /* Build configuration list for PBXProject "MetalKitPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
