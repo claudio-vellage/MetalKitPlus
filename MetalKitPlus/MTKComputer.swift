@@ -14,9 +14,13 @@ import Metal
     - note: Should be used subclassed and conform to `MTKFunctionExecutor`
  */
 open class MTKComputer {
+    public let device:MTLDevice
     public let commandQueue:MTLCommandQueue
+    public var assets:MTKAssets
     
-    public init(commandQueue:MTLCommandQueue) {
-        self.commandQueue = commandQueue
+    public init(assets:MTKAssets, device:MTLDevice = MTKDevice.instance.device!) {
+        self.device = device
+        self.commandQueue = device.makeCommandQueue()
+        self.assets = assets
     }
 }

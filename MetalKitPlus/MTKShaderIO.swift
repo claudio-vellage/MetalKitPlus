@@ -39,4 +39,9 @@ open class MTKShaderIO {
         self.device = device
         self.textureLoader = MTKTextureLoader(device: device)
     }
+    
+    public convenience init() {
+        let device = MTKDevice.instance.device!
+        self.init(device: device)
+    }
 }

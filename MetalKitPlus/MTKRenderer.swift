@@ -11,6 +11,13 @@ import MetalKit
 /**
  * All renderers must be delegates of an MTKView.
  */
-public protocol MTKRenderer : MTKViewDelegate {
-    init?(device:MTLDevice, with view:MTKView)
+open class MTKRenderer : NSObject {
+    public let device:MTLDevice
+    public let commandQueue:MTLCommandQueue
+    
+    public init(device:MTLDevice = MTKDevice.instance.device!) {
+        self.device = device
+        self.commandQueue = device.makeCommandQueue()
+        super.init()
+    }
 }

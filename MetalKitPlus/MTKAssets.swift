@@ -31,9 +31,17 @@ import Metal
     where tonemapping has been initialized inside MTKHdrAssets.
  */
 open class MTKAssets {
+    public let device:MTLDevice
+    public let library:MTLLibrary
     private var dictionary:Dictionary<String,MTKPipelineStateDescriptor>
     
-    public init() {
+    public convenience init() {
+        self.init(device:MTKDevice.instance.device!)
+    }
+    
+    public init(device:MTLDevice) {
+        self.device = device
+        self.library = device.newDefaultLibrary()!
         self.dictionary = [:]
     }
     

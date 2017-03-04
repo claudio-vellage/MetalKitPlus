@@ -8,8 +8,6 @@
 
 import XCTest
 
-import MetalKitPlus
-
 class MTKDeviceTests: XCTestCase {
     override func setUp() {
         super.setUp()
@@ -33,11 +31,18 @@ class MTKDeviceTests: XCTestCase {
     }
     
     
-    func testSingleton() {
+    func testSingletonMTKDevice() {
         let instance1 = MTKDevice.instance
         let instance2 = MTKDevice.instance
         
         XCTAssert(instance1 === instance2)
+    }
+    
+    func testSingletonMTLDevice() {
+        let instance1 = MTKDevice.instance
+        let instance2 = MTKDevice.instance
+        
+        XCTAssert(instance1.device === instance2.device)
     }
 
 }
