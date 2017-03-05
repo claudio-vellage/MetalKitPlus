@@ -23,4 +23,6 @@ open class MTKComputer {
         self.commandQueue = device.makeCommandQueue()
         self.assets = assets
     }
+    
+    public lazy var execute: ((String) -> ())? = nil
 }
