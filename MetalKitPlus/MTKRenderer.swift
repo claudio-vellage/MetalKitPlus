@@ -14,10 +14,20 @@ import MetalKit
 open class MTKRenderer : NSObject {
     public let device:MTLDevice
     public let commandQueue:MTLCommandQueue
+    public let mtkView:MTKView
     
-    public init(device:MTLDevice = MTKDevice.instance.device!) {
+    public init(view:MTKView, device:MTLDevice = MTKDevice.instance.device!) {
         self.device = device
         self.commandQueue = device.makeCommandQueue()
+        
+        view.sampleCount = 4
+        view.clearColor = MTLClearColorMake(1, 1, 1, 1)
+        view.colorPixelFormat = .bgra8Unorm
+        view.depthStencilPixelFormat = .depth32Float
+        view.device = device
+        
+        self.mtkView = view
+        
         super.init()
     }
 }

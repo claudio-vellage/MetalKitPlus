@@ -19,12 +19,7 @@ public class MTKMeshDescriptor {
     public var indexCount: Int
     public var indexType: MTLIndexType
     
-    public convenience init?(cubeWithSize size: Float) {
-        self.init(device: MTKDevice.instance.device!, cubeWithSize: size)
-    }
-    
-    public init?(device:MTLDevice, cubeWithSize size: Float)
-    {        
+    public init?(cubeWithSize size: Float, device:MTLDevice = MTKDevice.instance.device!) {
         let allocator = MTKMeshBufferAllocator(device: device)
         
         let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),

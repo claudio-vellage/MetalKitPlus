@@ -35,11 +35,7 @@ open class MTKAssets {
     public let library:MTLLibrary
     private var dictionary:Dictionary<String,MTKPipelineStateDescriptor>
     
-    public convenience init() {
-        self.init(device:MTKDevice.instance.device!)
-    }
-    
-    public init(device:MTLDevice) {
+    public init(device:MTLDevice = MTKDevice.instance.device!) {
         self.device = device
         self.library = device.newDefaultLibrary()!
         self.dictionary = [:]
@@ -52,6 +48,27 @@ open class MTKAssets {
         
         set(pipelineStateDescriptor) {
             dictionary[key] = pipelineStateDescriptor
+        }
+    }
+    
+    
+    public func add(shader:MTKShader)
+    {
+        guard let function = library.makeFunction(name: shader.name) else {
+            fatalError("The _function_ has not been initialized.")
+        }
+        
+        do {
+            let computePipelineState = try device.makeComputePipelineState(function: function)
+            
+            self[shader.name] = MTKComputePipelineStateDescriptor(
+                state:computePipelineState,
+                tgSize:shader.tgSize,
+                textures:shader.io.fetchTextures?(),
+                buffers:shader.io.fetchBuffers?()
+            )
+        } catch let error as NSError {
+            fatalError("Unexpected error ocurred: \(error.localizedDescription).")
         }
     }
 }

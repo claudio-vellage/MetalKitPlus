@@ -18,7 +18,7 @@ public struct MTKComputePipelineStateDescriptor : MTKPipelineStateDescriptor {
     public let buffers:[MTLBuffer]?
     public let samplers:[MTLSamplerState]?
     
-    public init (state:MTLComputePipelineState, tgSize:(Int,Int,Int) , textures:[MTLTexture]? = nil, buffers:[MTLBuffer]? = nil, samplers:[MTLSamplerState]? = nil) {
+    public init (state:MTLComputePipelineState, tgSize:(Int,Int,Int), textures:[MTLTexture]? = nil, buffers:[MTLBuffer]? = nil, samplers:[MTLSamplerState]? = nil) {
         self.state = state
         self.tgSize = tgSize
         self.textures = textures
