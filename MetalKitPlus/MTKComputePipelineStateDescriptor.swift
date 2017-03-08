@@ -13,10 +13,10 @@ import Metal
  */
 public struct MTKComputePipelineStateDescriptor : MTKPipelineStateDescriptor {
     public let state:MTLComputePipelineState
-    public let tgSize:(Int,Int,Int)
-    public let textures:[MTLTexture]?
-    public let buffers:[MTLBuffer]?
-    public let samplers:[MTLSamplerState]?
+    public var tgSize:(Int,Int,Int)
+    public var textures:[MTLTexture]?
+    public var buffers:[MTLBuffer]?
+    public var samplers:[MTLSamplerState]?
     
     public init (state:MTLComputePipelineState, tgSize:(Int,Int,Int), textures:[MTLTexture]? = nil, buffers:[MTLBuffer]? = nil, samplers:[MTLSamplerState]? = nil) {
         self.state = state

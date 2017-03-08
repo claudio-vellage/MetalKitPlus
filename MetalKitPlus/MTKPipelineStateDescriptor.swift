@@ -15,8 +15,8 @@ import Metal
  * supposed to be stored in a dictionary inside MTKAssets.
  */
 public protocol MTKPipelineStateDescriptor {
-    var tgSize:(Int,Int,Int) { get }
-    var textures:[MTLTexture]? { get }
-    var buffers:[MTLBuffer]? { get }
-    var samplers:[MTLSamplerState]? { get }
+    var tgSize:(Int,Int,Int) { get set }
+    var textures:[MTLTexture]? { get set }
+    var buffers:[MTLBuffer]? { get set }
+    var samplers:[MTLSamplerState]? { get set }
 }
