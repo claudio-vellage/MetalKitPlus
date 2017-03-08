@@ -30,7 +30,6 @@ class MTKDeviceTests: XCTestCase {
         XCTAssert(device != nil)
     }
     
-    
     func testSingletonMTKDevice() {
         let instance1 = MTKDevice.instance
         let instance2 = MTKDevice.instance
