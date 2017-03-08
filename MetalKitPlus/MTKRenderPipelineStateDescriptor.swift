@@ -13,11 +13,11 @@ import Metal
  */
 public struct MTKRenderPipelineStateDescriptor : MTKPipelineStateDescriptor {
     public let state:MTLRenderPipelineState
-    public let tgSize:(Int, Int, Int)
+    public var tgSize:(Int, Int, Int)
     public let depthStencilState:MTLDepthStencilState
-    public let textures:[MTLTexture]?
-    public let buffers:[MTLBuffer]?
-    public let samplers:[MTLSamplerState]?
+    public var textures:[MTLTexture]?
+    public var buffers:[MTLBuffer]?
+    public var samplers:[MTLSamplerState]?
     public let meshes:[MTKMeshDescriptor]?
     
     public init (state:MTLRenderPipelineState,
