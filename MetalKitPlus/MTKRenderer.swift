@@ -18,8 +18,12 @@ open class MTKRenderer : NSObject {
     
     public init(view:MTKView, device:MTLDevice = MTKDevice.instance.device!) {
         self.device = device
-        self.commandQueue = device.makeCommandQueue()
         
+        guard let commandQueue = device.makeCommandQueue() else {
+            fatalError("Something went wrong")
+        }
+        
+        self.commandQueue = commandQueue
         view.sampleCount = 4
         view.clearColor = MTLClearColorMake(1, 1, 1, 1)
         view.colorPixelFormat = .bgra8Unorm

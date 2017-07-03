@@ -10,6 +10,7 @@ import Metal
 
 private let _instance = MTKDevice()
 
+@_versioned
 class MTKDevice {
     public let device = MTLCreateSystemDefaultDevice()
     

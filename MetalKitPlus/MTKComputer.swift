@@ -20,7 +20,12 @@ open class MTKComputer {
     
     public init(assets:MTKAssets, device:MTLDevice = MTKDevice.instance.device!) {
         self.device = device
-        self.commandQueue = device.makeCommandQueue()
+        
+        guard let commandQueue = device.makeCommandQueue() else {
+            fatalError("CommandQueue not initialzied" )
+        }
+        
+        self.commandQueue = commandQueue
         self.assets = assets
     }
     

@@ -37,7 +37,7 @@ open class MTKAssets {
     
     public init(device:MTLDevice = MTKDevice.instance.device!) {
         self.device = device
-        self.library = device.newDefaultLibrary()!
+        self.library = device.makeDefaultLibrary()!
         self.dictionary = [:]
     }
     

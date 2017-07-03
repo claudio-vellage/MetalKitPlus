@@ -37,7 +37,7 @@ public class MTKMeshDescriptor {
             vertexBuffer = mtkVertexBuffer.buffer
             vertexBuffer.label = "Mesh Vertices"
             
-            vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(mdlMesh.vertexDescriptor)
+            vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(mdlMesh.vertexDescriptor)!
             primitiveType = submesh.primitiveType
             indexBuffer = mtkIndexBuffer.buffer
             indexBuffer.label = "Mesh Indices"
