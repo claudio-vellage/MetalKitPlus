@@ -15,18 +15,20 @@ import MetalKit
  
  - requires: `MTLDevice`
  */
-public protocol MTKPShaderIO {
-    /// Should handle texture related IO operations.
+public protocol MTKPTextureLoader {
     func fetchTextures() -> [MTLTexture]?
-    
-    /// Should handle buffer related IO operations.
+}
+
+public protocol MTKPBufferLoader {
     func fetchBuffers() -> [MTLBuffer]?
 }
 
-extension MTKPShaderIO where Self : MTKPDeviceUser & MTKPTextureLoader  {
+public protocol MTKPIOProvider : MTKPTextureLoader, MTKPBufferLoader {}
+
+open class MTKPShaderIO : MTKPDeviceUser {
+    private(set) var textureLoader:MTKTextureLoader? = nil
+    
     public init() {
-        self.init()
-        
         guard let device = self.device else {
             fatalError("The _device_ has not been initialized.")
         }
