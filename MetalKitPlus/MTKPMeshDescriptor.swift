@@ -11,37 +11,50 @@ import Metal
 import MetalKit
 import ModelIO
 
-public class MTKMeshDescriptor {
-    public var vertexBuffer: MTLBuffer
-    public var vertexDescriptor: MTLVertexDescriptor
-    public var primitiveType: MTLPrimitiveType
-    public var indexBuffer: MTLBuffer
-    public var indexCount: Int
-    public var indexType: MTLIndexType
-    
-    public init?(cubeWithSize size: Float, device:MTLDevice = MTKDevice.instance.device!) {
-        let allocator = MTKMeshBufferAllocator(device: device)
-        
-        let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),
-                              segments: vector_uint3(10, 10, 10),
-                              inwardNormals: false,
-                              geometryType: .triangles,
-                              allocator: allocator)
+public protocol MTKPMeshDescriptor {
+    var vertexBuffer: MTLBuffer! { get set }
+    var vertexDescriptor: MTLVertexDescriptor! { get set }
+    var primitiveType: MTLPrimitiveType! { get set }
+    var indexBuffer: MTLBuffer! { get set }
+    var indexCount: Int! { get set }
+    var indexType: MTLIndexType! { get set }
+}
 
+public struct MTKPCubeDescriptor : MTKPMeshDescriptor, MTKPDeviceUser {
+    public var vertexBuffer: MTLBuffer! = nil
+    public var vertexDescriptor: MTLVertexDescriptor! = nil
+    public var primitiveType: MTLPrimitiveType! = nil
+    public var indexBuffer: MTLBuffer! = nil
+    public var indexCount: Int! = nil
+    public var indexType: MTLIndexType! = nil
+    
+    public init?(cubeWithSize size: Float) {
+        guard let device = self.device else {
+            fatalError("The device has not been initialized")
+        }
+        
+        let allocator = MTKMeshBufferAllocator(device: device)
+    
+        let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),
+        segments: vector_uint3(10, 10, 10),
+        inwardNormals: false,
+        geometryType: .triangles,
+        allocator: allocator)
+    
         do {
             let mtkMesh = try MTKMesh(mesh: mdlMesh, device: device)
             let mtkVertexBuffer = mtkMesh.vertexBuffers[0]
             let submesh = mtkMesh.submeshes[0]
             let mtkIndexBuffer = submesh.indexBuffer
-
+    
             vertexBuffer = mtkVertexBuffer.buffer
             vertexBuffer.label = "Mesh Vertices"
-            
+    
             vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(mdlMesh.vertexDescriptor)!
             primitiveType = submesh.primitiveType
             indexBuffer = mtkIndexBuffer.buffer
             indexBuffer.label = "Mesh Indices"
-            
+    
             indexCount = submesh.indexCount
             indexType = submesh.indexType
         } catch _ {

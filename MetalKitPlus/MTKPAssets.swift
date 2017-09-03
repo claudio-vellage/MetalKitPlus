@@ -30,42 +30,49 @@ import Metal
  
     where tonemapping has been initialized inside MTKHdrAssets.
  */
-open class MTKAssets {
-    public let device:MTLDevice
-    public let library:MTLLibrary
-    private var dictionary:Dictionary<String,MTKPipelineStateDescriptor>
+public protocol MTKPAssets : MTKPDeviceUser {
+    var dictionary:Dictionary<String,MTKPPipelineStateDescriptor> { get set }
     
-    public init(device:MTLDevice = MTKDevice.instance.device!) {
-        self.device = device
+    subscript(key:String) -> MTKPPipelineStateDescriptor? { get set }
+    
+    mutating func add(shader:MTKPShader)
+}
+
+extension MTKPAssets where Self : MTKPDeviceUser & MTKPLibraryUser {
+    public init() {
+        self.init()
+        
+        guard let device = self.device else {
+            fatalError("The _device_ has not been initialized.")
+        }
+        
         self.library = device.makeDefaultLibrary()!
         self.dictionary = [:]
     }
-    
-    public subscript(key:String) -> MTKPipelineStateDescriptor? {
+
+    public subscript(key:String) -> MTKPPipelineStateDescriptor? {
         get {
             return dictionary[key]
         }
-        
+    
         set(pipelineStateDescriptor) {
             dictionary[key] = pipelineStateDescriptor
         }
     }
-    
-    
-    public func add(shader:MTKShader)
-    {
-        guard let function = library.makeFunction(name: shader.name) else {
+
+    public mutating func add(shader:MTKPShader) {
+        guard let function = library.makeFunction(name: shader.name), let device = self.device else {
             fatalError("The _function_ has not been initialized.")
         }
-        
+    
         do {
             let computePipelineState = try device.makeComputePipelineState(function: function)
-            
-            self[shader.name] = MTKComputePipelineStateDescriptor(
+        
+            self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,
                 tgSize:shader.tgSize,
-                textures:shader.io.fetchTextures?(),
-                buffers:shader.io.fetchBuffers?()
+                textures:shader.io.fetchTextures(),
+                buffers:shader.io.fetchBuffers()
             )
         } catch let error as NSError {
             fatalError("Unexpected error ocurred: \(error.localizedDescription).")

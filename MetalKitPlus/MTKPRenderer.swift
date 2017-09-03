@@ -11,15 +11,12 @@ import MetalKit
 /**
  * All renderers must be delegates of an MTKView.
  */
-open class MTKRenderer : NSObject {
-    public let device:MTLDevice
-    public let commandQueue:MTLCommandQueue
-    public let mtkView:MTKView
+public struct MTKPRenderer : MTKPDeviceUser {
+    public private(set) var commandQueue:MTLCommandQueue! = nil
+    public private(set) var mtkView:MTKView! = nil
     
-    public init(view:MTKView, device:MTLDevice = MTKDevice.instance.device!) {
-        self.device = device
-        
-        guard let commandQueue = device.makeCommandQueue() else {
+    public init(view:MTKView) {
+        guard let device = self.device, let commandQueue = device.makeCommandQueue() else {
             fatalError("Something went wrong")
         }
         
@@ -31,7 +28,5 @@ open class MTKRenderer : NSObject {
         view.device = device
         
         self.mtkView = view
-        
-        super.init()
     }
 }
