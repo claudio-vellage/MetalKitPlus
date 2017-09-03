@@ -30,38 +30,27 @@ import Metal
  
     where tonemapping has been initialized inside MTKHdrAssets.
  */
-public protocol MTKPAssets : MTKPDeviceUser {
-    var dictionary:Dictionary<String,MTKPPipelineStateDescriptor> { get set }
+public protocol MTKPAssetDictionary : MTKPDeviceUser, MTKPLibrary {
+    var dictionary:Dictionary<String,MTKPPipelineStateDescriptor>? { get set }
     
     subscript(key:String) -> MTKPPipelineStateDescriptor? { get set }
     
     mutating func add(shader:MTKPShader)
 }
 
-extension MTKPAssets where Self : MTKPDeviceUser & MTKPLibraryUser {
-    public init() {
-        self.init()
-        
-        guard let device = self.device else {
-            fatalError("The _device_ has not been initialized.")
-        }
-        
-        self.library = device.makeDefaultLibrary()!
-        self.dictionary = [:]
-    }
-
+public extension MTKPAssetDictionary {
     public subscript(key:String) -> MTKPPipelineStateDescriptor? {
         get {
-            return dictionary[key]
+            return dictionary![key]
         }
     
         set(pipelineStateDescriptor) {
-            dictionary[key] = pipelineStateDescriptor
+            dictionary![key] = pipelineStateDescriptor
         }
     }
 
     public mutating func add(shader:MTKPShader) {
-        guard let function = library.makeFunction(name: shader.name), let device = self.device else {
+        guard let function = library!.makeFunction(name: shader.name), let device = self.device else {
             fatalError("The _function_ has not been initialized.")
         }
     
@@ -77,5 +66,36 @@ extension MTKPAssets where Self : MTKPDeviceUser & MTKPLibraryUser {
         } catch let error as NSError {
             fatalError("Unexpected error ocurred: \(error.localizedDescription).")
         }
+    }
+}
+
+public struct MTKPAssets : MTKPAssetDictionary {
+    public var dictionary: Dictionary<String, MTKPPipelineStateDescriptor>? = [:]
+    public var library: MTLLibrary? = nil
+    
+    public init() {
+        guard let device = self.device else {
+            fatalError("The _device_ has not been initialized.")
+        }
+        
+        let bundle = Bundle(for: MTKPShaderLookup.self)
+        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
+            fatalError("Could not load default library from specified bundle")
+        }
+        
+        self.library = library
+    }
+    
+    public init(_ lookupClass:AnyClass) {
+        guard let device = self.device else {
+            fatalError("The _device_ has not been initialized.")
+        }
+        
+        let bundle = Bundle(for: lookupClass)
+        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
+            fatalError("Could not load default library from specified bundle")
+        }
+        
+        self.library = library
     }
 }

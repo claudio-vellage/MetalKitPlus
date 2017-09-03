@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MTKPTestLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>MetalKitPlus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>MetalKitPlusTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -18,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>31BBCFDF1E6A061400C8B718</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31CE05451F5CB0B2007D7C4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

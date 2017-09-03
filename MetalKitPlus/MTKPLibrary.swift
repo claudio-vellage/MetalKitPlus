@@ -8,6 +8,6 @@
 
 import Metal
 
-public protocol MTKPLibraryUser {
-    var library:MTLLibrary { get set }
+public protocol MTKPLibrary {
+    var library:MTLLibrary? { get set }
 }

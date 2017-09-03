@@ -10,11 +10,11 @@ import Metal
 
 private var queue:MTLCommandQueue! = nil
 
-public protocol MTKPCommandQueueUser : MTKPDeviceUser {
+public protocol MTKPCommandQueue : MTKPDeviceUser {
     var commandQueue:MTLCommandQueue! { get }
 }
 
-extension MTKPCommandQueueUser {
+extension MTKPCommandQueue {
     public var commandQueue:MTLCommandQueue! {
         return queue
     }
