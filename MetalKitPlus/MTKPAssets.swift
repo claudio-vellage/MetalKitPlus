@@ -74,16 +74,7 @@ public struct MTKPAssets : MTKPAssetDictionary {
     public var library: MTLLibrary? = nil
     
     public init() {
-        guard let device = self.device else {
-            fatalError("The _device_ has not been initialized.")
-        }
-        
-        let bundle = Bundle(for: MTKPShaderLookup.self)
-        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
-            fatalError("Could not load default library from specified bundle")
-        }
-        
-        self.library = library
+        self.init(MTKPShaderLookup.self)
     }
     
     public init(_ lookupClass:AnyClass) {
