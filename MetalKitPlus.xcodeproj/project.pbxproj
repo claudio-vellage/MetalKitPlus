@@ -27,7 +27,7 @@
 		31CE052F1F5C8F0A007D7C4E /* MTKPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */; };
 		31CE05301F5C8F0C007D7C4E /* MTKPCommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05251F5C7F20007D7C4E /* MTKPCommandQueue.swift */; };
 		31CE05311F5C9540007D7C4E /* MTKPDeviceUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE11F5C44B40090A6E8 /* MTKPDeviceUserTests.swift */; };
-		31CE05681F5CB9F8007D7C4E /* MTKPTestLib.metal in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05481F5CB0B2007D7C4E /* MTKPTestLib.metal */; };
+		31CE05681F5CB9F8007D7C4E /* MTKPTestShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */; };
 		31CE056B1F5CBFD9007D7C4E /* MTKPShaderLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05691F5CBF62007D7C4E /* MTKPShaderLookup.swift */; };
 		31CE056E1F5CC0E2007D7C4E /* MTKPShaderLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05691F5CBF62007D7C4E /* MTKPShaderLookup.swift */; };
 		31CE056F1F5CC0F3007D7C4E /* MTKPAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05361F5CA1DB007D7C4E /* MTKPAssetsTests.swift */; };
@@ -63,8 +63,7 @@
 		31CE05361F5CA1DB007D7C4E /* MTKPAssetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPAssetsTests.swift; sourceTree = "<group>"; };
 		31CE05401F5CAE9D007D7C4E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		31CE05421F5CAEA5007D7C4E /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
-		31CE05481F5CB0B2007D7C4E /* MTKPTestLib.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MTKPTestLib.metal; sourceTree = "<group>"; };
-		31CE05631F5CB870007D7C4E /* Test.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Test.metal; sourceTree = "<group>"; };
+		31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MTKPTestShaders.metal; sourceTree = "<group>"; };
 		31CE05691F5CBF62007D7C4E /* MTKPShaderLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPShaderLookup.swift; sourceTree = "<group>"; };
 		31E00C7E1DD8F12B00C47BE5 /* MetalKitPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetalKitPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E00C811DD8F12B00C47BE5 /* MetalKitPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalKitPlus.h; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */ = {
 			isa = PBXGroup;
 			children = (
+				31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */,
 				310DCAE11F5C44B40090A6E8 /* MTKPDeviceUserTests.swift */,
 				310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */,
 				31BBCFD11E69C9C100C8B718 /* Info.plist */,
@@ -115,29 +115,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		31CE05471F5CB0B2007D7C4E /* MTKPTestLib */ = {
-			isa = PBXGroup;
-			children = (
-				31CE05481F5CB0B2007D7C4E /* MTKPTestLib.metal */,
-			);
-			path = MTKPTestLib;
-			sourceTree = "<group>";
-		};
-		31CE05621F5CB870007D7C4E /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				31CE05631F5CB870007D7C4E /* Test.metal */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		31E00C741DD8F12B00C47BE5 = {
 			isa = PBXGroup;
 			children = (
 				31E00C801DD8F12B00C47BE5 /* MetalKitPlus */,
 				31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */,
-				31CE05471F5CB0B2007D7C4E /* MTKPTestLib */,
-				31CE05621F5CB870007D7C4E /* Test */,
 				31E00C7F1DD8F12B00C47BE5 /* Products */,
 				31CE053F1F5CAE9C007D7C4E /* Frameworks */,
 			);
@@ -286,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31CE05681F5CB9F8007D7C4E /* MTKPTestLib.metal in Sources */,
+				31CE05681F5CB9F8007D7C4E /* MTKPTestShaders.metal in Sources */,
 				31CE052F1F5C8F0A007D7C4E /* MTKPLibrary.swift in Sources */,
 				31CE056F1F5CC0F3007D7C4E /* MTKPAssetsTests.swift in Sources */,
 				31CE052A1F5C8EFA007D7C4E /* MTKPComputer.swift in Sources */,
