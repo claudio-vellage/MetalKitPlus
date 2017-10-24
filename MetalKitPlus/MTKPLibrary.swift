@@ -1,5 +1,5 @@
 //
-//  MTKPCommandQueue.swift
+//  MTKPLibrary.swift
 //  MetalKitPlus
 //
 //  Created by Claudio Vellage on 03.09.17.
@@ -17,24 +17,6 @@
 
 import Metal
 
-private var queue:MTLCommandQueue! = nil
-
-public protocol MTKPCommandQueue : MTKPDeviceUser {
-    var commandQueue:MTLCommandQueue! { get }
-}
-
-extension MTKPCommandQueue {
-    public var commandQueue:MTLCommandQueue! {
-        return queue
-    }
-    
-    public init() {
-        self.init()
-        
-        guard let device = self.device, let commandQueue = device.makeCommandQueue() else {
-            fatalError("CommandQueue not initialzied" )
-        }
-        
-        queue = commandQueue
-    }
+public protocol MTKPLibrary {
+    var library:MTLLibrary? { get set }
 }

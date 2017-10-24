@@ -1,5 +1,5 @@
 //
-//  MTKPCommandQueue.swift
+//  MTKPAssetsTest.swift
 //  MetalKitPlus
 //
 //  Created by Claudio Vellage on 03.09.17.
@@ -15,26 +15,33 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import Metal
+import XCTest
 
-private var queue:MTLCommandQueue! = nil
-
-public protocol MTKPCommandQueue : MTKPDeviceUser {
-    var commandQueue:MTLCommandQueue! { get }
-}
-
-extension MTKPCommandQueue {
-    public var commandQueue:MTLCommandQueue! {
-        return queue
+class MTKPAssetsTests: XCTestCase {
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    public init() {
-        self.init()
-        
-        guard let device = self.device, let commandQueue = device.makeCommandQueue() else {
-            fatalError("CommandQueue not initialzied" )
-        }
-        
-        queue = commandQueue
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
+    
+    func testInit() {
+        let assets = MTKPAssets()
+
+        XCTAssert(assets.device != nil)
+        XCTAssert(assets.library != nil)
+        XCTAssert(assets.dictionary != nil)
+    }
+    
+    func testInitWithClass() {
+        let assets = MTKPAssets(MTKPShaderLookup.self)
+        
+        XCTAssert(assets.device != nil)
+        XCTAssert(assets.library != nil)
+        XCTAssert(assets.dictionary != nil)
+    }
+    
 }
