@@ -17,14 +17,6 @@
 
 import Metal
 
-public struct MTKPComputer : MTKPCommandQueue {
-    var assets:MTKPAssets
-    
-    public init(assets:MTKPAssets) {
-        self.assets = assets
-    }
-}
-
 public protocol MTKPShaderExecutor {
     func execute(_ name:String)
 }
