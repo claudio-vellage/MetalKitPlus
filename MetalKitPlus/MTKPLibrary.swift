@@ -17,6 +17,6 @@
 
 import Metal
 
-public protocol MTKPLibrary {
+public protocol MTKPLibraryUser {
     var library:MTLLibrary? { get set }
 }

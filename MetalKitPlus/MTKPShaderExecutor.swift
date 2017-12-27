@@ -17,6 +17,12 @@
 
 import Metal
 
-public protocol MTKPShaderExecutor {
-    func execute(_ name:String)
+/**
+ * An MTKPShaderExecutor should be able to encode Metal shaders
+ * by name. This can be realized by utilizing MTKPAssets. A realization
+ * is referred to as MTKPComputer.
+ */
+
+public protocol MTKPShaderEncoder {
+    func encode(_ name:String)
 }

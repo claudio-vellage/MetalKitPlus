@@ -35,6 +35,10 @@ public struct MTKPPipelineData {
     }
 }
 
+/**
+ * Unified access to tgSize, textures, buffers and samplers.
+ */
+
 public protocol MTKPPipelineStateDescriptor {
     var tgSize:(Int,Int,Int)? { get set }
     var textures:[MTLTexture]? { get set }

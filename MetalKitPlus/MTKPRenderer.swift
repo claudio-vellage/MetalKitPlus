@@ -17,6 +17,8 @@
 
 import MetalKit
 
+// Warning: This code is not maintained!
+
 public struct MTKPRenderer : MTKPDeviceUser {
     public private(set) var commandQueue:MTLCommandQueue! = nil
     public private(set) var mtkView:MTKView! = nil
