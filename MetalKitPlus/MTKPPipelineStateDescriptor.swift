@@ -35,12 +35,6 @@ public struct MTKPPipelineData {
     }
 }
 
-/**
- * MTKPipelineStateDescriptor defines a protocol for
- * classes that store threadgroup size, textures, buffers
- * and samplers. These MTKPipelineStateDescriptors are
- * supposed to be stored in a dictionary inside MTKAssets.
- */
 public protocol MTKPPipelineStateDescriptor {
     var tgSize:(Int,Int,Int)? { get set }
     var textures:[MTLTexture]? { get set }

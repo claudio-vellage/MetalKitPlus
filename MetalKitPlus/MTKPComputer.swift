@@ -17,11 +17,6 @@
 
 import Metal
 
-/**
-    A `MTKComputer` is used to operate on a given `MTLCommandQueue`.
-    
-    - note: Should be used subclassed and conform to `MTKFunctionExecutor`
- */
 public struct MTKPComputer : MTKPCommandQueue {
     var assets:MTKPAssets
     

@@ -17,9 +17,6 @@
 
 import MetalKit
 
-/**
- * All renderers must be delegates of an MTKView.
- */
 public struct MTKPRenderer : MTKPDeviceUser {
     public private(set) var commandQueue:MTLCommandQueue! = nil
     public private(set) var mtkView:MTKView! = nil
