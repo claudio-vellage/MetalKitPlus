@@ -35,7 +35,7 @@ public protocol MTKPBufferLoader {
 public protocol MTKPIOProvider : MTKPTextureLoader, MTKPBufferLoader {}
 
 open class MTKPShaderIO : MTKPDeviceUser {
-    private(set) var textureLoader:MTKTextureLoader? = nil
+    public private(set) var textureLoader:MTKTextureLoader? = nil
     
     public init() {
         guard let device = self.device else {
