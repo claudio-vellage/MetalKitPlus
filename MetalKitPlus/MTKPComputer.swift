@@ -23,7 +23,7 @@ import Metal
     - note: Should be used subclassed and conform to `MTKFunctionExecutor`
  */
 public struct MTKPComputer : MTKPCommandQueue {
-    var assets:MTKPAssets
+    public var assets:MTKPAssets
     
     public init(assets:MTKPAssets) {
         self.assets = assets
