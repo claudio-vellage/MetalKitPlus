@@ -17,13 +17,57 @@
 
 import Metal
 
-public protocol MTKPAssetDictionary : MTKPDeviceUser, MTKPLibrary {
+/**
+ * MTKPAssets organizes MTKPPipelineStateDescriptors along with the Metal library.
+ *
+ * All resources that are relevant for a shader can be retrieved by using the subscript
+ * operator:
+ *
+ * ```
+ * let pipelineStateDescriptor = assets["myShader"]
+ * ```
+ *
+ * You usually want to retrieve the stateDescriptors prior to encoding your Metal command.
+ */
+
+public struct MTKPAssets : MTKPAssetDictionary {
+    public var dictionary: Dictionary<String, MTKPPipelineStateDescriptor>? = [:]
+    public var library: MTLLibrary? = nil
+    
+    public init() {
+        self.init(MTKPShaderLookup.self)
+    }
+    
+    public init(_ lookupClass:AnyClass) {
+        guard let device = self.device else {
+            fatalError("The _device_ has not been initialized.")
+        }
+        
+        let bundle = Bundle(for: lookupClass)
+        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
+            fatalError("Could not load default library from specified bundle")
+        }
+        
+        self.library = library
+    }
+}
+
+/**
+ * Every MTKPAssetDictionary uses a Metal device and library to compile the shaders.
+ */
+
+public protocol MTKPAssetDictionary : MTKPDeviceUser, MTKPLibraryUser {
     var dictionary:Dictionary<String,MTKPPipelineStateDescriptor>? { get set }
     
     subscript(key:String) -> MTKPPipelineStateDescriptor? { get set }
     
     mutating func add(shader:MTKPShader)
 }
+
+/**
+ * This extension provides a default implementation to add functions to the
+ * assets.
+ */
 
 public extension MTKPAssetDictionary {
     public subscript(key:String) -> MTKPPipelineStateDescriptor? {
@@ -56,24 +100,10 @@ public extension MTKPAssetDictionary {
     }
 }
 
-public struct MTKPAssets : MTKPAssetDictionary {
-    public var dictionary: Dictionary<String, MTKPPipelineStateDescriptor>? = [:]
-    public var library: MTLLibrary? = nil
-    
-    public init() {
-        self.init(MTKPShaderLookup.self)
-    }
-    
-    public init(_ lookupClass:AnyClass) {
-        guard let device = self.device else {
-            fatalError("The _device_ has not been initialized.")
-        }
-        
-        let bundle = Bundle(for: lookupClass)
-        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
-            fatalError("Could not load default library from specified bundle")
-        }
-        
-        self.library = library
-    }
+/**
+ * All structs that need access to assets, should conform to this protocol.
+ */
+
+public protocol MTKPAssetUser {
+    var assets:MTKPAssets { get }
 }

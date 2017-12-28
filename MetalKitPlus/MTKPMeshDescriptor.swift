@@ -20,6 +20,8 @@ import Metal
 import MetalKit
 import ModelIO
 
+// Warning: This code is not maintained!
+
 public protocol MTKPMeshDescriptor {
     var vertexBuffer: MTLBuffer! { get set }
     var vertexDescriptor: MTLVertexDescriptor! { get set }

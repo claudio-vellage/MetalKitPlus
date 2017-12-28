@@ -18,12 +18,24 @@
 import Metal
 import MetalKit
 
+/**
+ *
+ */
+
 public protocol MTKPTextureLoader {
     func fetchTextures() -> [MTLTexture]?
 }
 
+/**
+ *
+ */
+
 public protocol MTKPBufferLoader {
     func fetchBuffers() -> [MTLBuffer]?
 }
+
+/**
+ * 
+ */
 
 public protocol MTKPIOProvider : MTKPTextureLoader, MTKPBufferLoader {}
