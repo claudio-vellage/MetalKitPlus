@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17FB4B1F1FF7EA0B00D8A441 /* MTKPCommandQueueUserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FB4B1E1FF7EA0B00D8A441 /* MTKPCommandQueueUserTest.swift */; };
 		310DCAE31F5C46B00090A6E8 /* MTKPCubeDescriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */; };
 		310DCAE91F5C78140090A6E8 /* MTKPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */; };
 		3123C46D1FF45BDE005507A1 /* MTKPShaderLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3123C46C1FF45BDD005507A1 /* MTKPShaderLookup.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17FB4B1E1FF7EA0B00D8A441 /* MTKPCommandQueueUserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPCommandQueueUserTest.swift; sourceTree = "<group>"; };
 		310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPCubeDescriptorTests.swift; sourceTree = "<group>"; };
 		310DCAE11F5C44B40090A6E8 /* MTKPDeviceUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPDeviceUserTests.swift; sourceTree = "<group>"; };
 		310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPLibrary.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */,
 				31BBCFD11E69C9C100C8B718 /* Info.plist */,
 				31CE05361F5CA1DB007D7C4E /* MTKPAssetsTests.swift */,
+				17FB4B1E1FF7EA0B00D8A441 /* MTKPCommandQueueUserTest.swift */,
 			);
 			path = MetalKitPlusTests;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				31CE05301F5C8F0C007D7C4E /* MTKPCommandQueue.swift in Sources */,
 				31E84D221FF539A700981293 /* MTKPShaderLookup.swift in Sources */,
 				31CE05311F5C9540007D7C4E /* MTKPDeviceUserTests.swift in Sources */,
+				17FB4B1F1FF7EA0B00D8A441 /* MTKPCommandQueueUserTest.swift in Sources */,
 				31CE05281F5C8EF6007D7C4E /* MTKPAssets.swift in Sources */,
 				31E84D211FF539A100981293 /* MTKPComputer.swift in Sources */,
 				31CE052B1F5C8EFF007D7C4E /* MTKPPipelineStateDescriptor.swift in Sources */,
