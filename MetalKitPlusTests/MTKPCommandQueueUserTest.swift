@@ -17,11 +17,7 @@
 
 import XCTest
 
-struct MTKPCommandQueueTestUser : MTKPCommandQueueUser {
-    func accessInternally() {
-        XCTAssertNotNil(self.commandQueue, "Command Queue has not been initialized.")
-    }
-}
+struct MTKPCommandQueueTestUser : MTKPCommandQueueUser {}
 
 class MTKPCommandQueueUserTests: XCTestCase {
     
@@ -35,13 +31,6 @@ class MTKPCommandQueueUserTests: XCTestCase {
     
     func testCreation() {
         let testUser = MTKPCommandQueueTestUser()
-        
-        XCTAssertNotNil(testUser.commandQueue)
-    }
-    
-    func testInternalAccess() {
-        let testUser = MTKPCommandQueueTestUser()
-        testUser.accessInternally()
         
         XCTAssertNotNil(testUser.commandQueue)
     }
