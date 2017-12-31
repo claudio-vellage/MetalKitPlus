@@ -1,8 +1,8 @@
 //
-//  MTKPDevice.swift
-//  MetalKitPlus
+//  MTKPCommandQueueUserTest.swift
+//  MetalKitPlusTests
 //
-//  Created by Claudio Vellage on 03.03.17.
+//  Created by Philipp Waxweiler on 30.12.17.
 //  Copyright © 2017 Claudio Vellage. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -15,28 +15,39 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import Metal
+import XCTest
 
-private let _instance = MTKPDevice()
+struct MTKPCommandQueueTestUser : MTKPCommandQueueUser {}
 
-fileprivate class MTKPDevice {
-    var device:MTLDevice?
+class MTKPCommandQueueUserTests: XCTestCase {
     
-    init(device:MTLDevice? = MTLCreateSystemDefaultDevice()) {
-        self.device = device
+    override func setUp() {
+        super.setUp()
     }
     
-    public class var instance : MTKPDevice {
-        return _instance
+    override func tearDown() {
+        super.tearDown()
     }
+    
+    func testCreation() {
+        let testUser = MTKPCommandQueueTestUser()
+        
+        XCTAssertNotNil(testUser.commandQueue)
+    }
+    
+    func testForDeviceInitialization() {
+        let testUser = MTKPCommandQueueTestUser()
+        
+        XCTAssertNotNil(testUser.device)
+    }
+    
+    func testSingletonMTLDevice() {
+        let testUser1 = MTKPCommandQueueTestUser()
+        let testUser2 = MTKPCommandQueueTestUser()
+        
+        XCTAssert(testUser1.commandQueue === testUser2.commandQueue)
+    }
+    
 }
 
-public protocol MTKPDeviceUser {
-    var device:MTLDevice? { get }
-}
-
-extension MTKPDeviceUser {
-    public var device:MTLDevice? {
-        return MTKPDevice.instance.device
-    }
-}
+import Foundation
