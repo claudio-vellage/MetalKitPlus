@@ -35,6 +35,12 @@ class MTKPCommandQueueUserTests: XCTestCase {
         XCTAssertNotNil(testUser.commandQueue)
     }
     
+    func testForDeviceInitialization() {
+        let testUser = MTKPCommandQueueTestUser()
+        
+        XCTAssertNotNil(testUser.device)
+    }
+    
     func testSingletonMTLDevice() {
         let testUser1 = MTKPCommandQueueTestUser()
         let testUser2 = MTKPCommandQueueTestUser()
