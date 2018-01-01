@@ -35,7 +35,15 @@ public protocol MTKPBufferLoader {
 }
 
 /**
+ *
+ */
+
+public protocol MTKPThreadgroupMemoryLoader {
+    func fetchThreadgroupMemory() -> Int?
+}
+
+/**
  * 
  */
 
-public protocol MTKPIOProvider : MTKPTextureLoader, MTKPBufferLoader {}
+public protocol MTKPIOProvider : MTKPTextureLoader, MTKPBufferLoader, MTKPThreadgroupMemoryLoader {}
