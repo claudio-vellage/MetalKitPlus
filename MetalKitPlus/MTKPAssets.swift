@@ -88,6 +88,7 @@ public extension MTKPAssetDictionary {
             self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,
                 tgSize:shader.tgSize,
+                tgMemLength:shader.tgMemLength,
                 textures:shader.io.fetchTextures(),
                 buffers:shader.io.fetchBuffers()
             )

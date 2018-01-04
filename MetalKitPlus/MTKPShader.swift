@@ -17,11 +17,13 @@
 
 public struct MTKPShader {
     internal let tgSize : (Int,Int,Int)
+    internal let tgMemLength : (Int,Int)
     internal let io : MTKPIOProvider
     internal let name: String
     
-    public init(name:String, io:MTKPIOProvider, tgSize:(Int,Int,Int) = (16,16,1)) {
+    public init(name:String, io:MTKPIOProvider, tgSize:(Int,Int,Int) = (16,16,1), tgMemLength:(Int,Int) = (0,0)) {
         self.tgSize = tgSize
+        self.tgMemLength = tgMemLength
         self.io = io
         self.name = name
     }

@@ -133,6 +133,7 @@ public struct MTKPComputePipelineStateDescriptor : MTKPPipelineStateDescriptor {
     
     public init (state:MTLComputePipelineState,
                  tgSize:(Int,Int,Int),
+                 tgMemLength:(Int,Int),
                  textures:[MTLTexture]? = nil,
                  buffers:[MTLBuffer]? = nil,
                  samplers:[MTLSamplerState]? = nil
