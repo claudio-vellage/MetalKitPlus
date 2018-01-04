@@ -19,12 +19,12 @@ import MetalKit
 
 // Warning: This code is not maintained!
 
-public struct MTKPRenderer : MTKPDeviceUser {
+public struct MTKPRenderer {
     public private(set) var commandQueue:MTLCommandQueue! = nil
     public private(set) var mtkView:MTKView! = nil
     
     public init(view:MTKView) {
-        guard let device = self.device, let commandQueue = device.makeCommandQueue() else {
+        guard let commandQueue = MTKPDevice.instance.device.makeCommandQueue() else {
             fatalError("Something went wrong")
         }
         
@@ -33,7 +33,7 @@ public struct MTKPRenderer : MTKPDeviceUser {
         view.clearColor = MTLClearColorMake(1, 1, 1, 1)
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
-        view.device = device
+        view.device = MTKPDevice.instance.device
         
         self.mtkView = view
     }

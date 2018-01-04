@@ -31,7 +31,6 @@ class MTKPAssetsTests: XCTestCase {
     func testInit() {
         let assets = MTKPAssets()
 
-        XCTAssert(assets.device != nil)
         XCTAssert(assets.library != nil)
         XCTAssert(assets.dictionary != nil)
     }
@@ -39,7 +38,6 @@ class MTKPAssetsTests: XCTestCase {
     func testInitWithClass() {
         let assets = MTKPAssets(MTKPShaderLookup.self)
         
-        XCTAssert(assets.device != nil)
         XCTAssert(assets.library != nil)
         XCTAssert(assets.dictionary != nil)
     }
