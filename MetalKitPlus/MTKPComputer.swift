@@ -46,10 +46,7 @@ public extension MTKPComputer {
         
         guard
             let sourceTexture = stateDescriptor.textures?.first,
-            let pipelineState = stateDescriptor.state,
-            let tgSizeX = stateDescriptor.tgSize?.0,
-            let tgSizeY = stateDescriptor.tgSize?.1,
-            let tgSizeZ = stateDescriptor.tgSize?.2 else {
+            let pipelineState = stateDescriptor.state else {
                 // TODO: Insert proper error message here.
                 fatalError()
         }
@@ -68,9 +65,9 @@ public extension MTKPComputer {
         /// - todo: Samplers arent supported yet
         
         commandEncoder.dispatchThreadgroups(
-            tgSizeX,
-            tgSizeY,
-            tgSizeZ,
+            16,
+            16,
+            1,
             width: width,
             height: height,
             depth: depth

@@ -84,10 +84,9 @@ public extension MTKPAssetDictionary {
     
         do {
             let computePipelineState = try MTKPDevice.instance.device.makeComputePipelineState(function: function)
-        
+            
             self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,
-                tgSize:shader.tgSize,
                 textures:shader.io.fetchTextures(),
                 buffers:shader.io.fetchBuffers()
             )
