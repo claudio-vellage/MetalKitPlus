@@ -9,16 +9,16 @@
 import XCTest
 
 struct MTKPTestComputer : MTKPComputer {
-    private let computerAssets:MTKPAssets
-    
-    public var assets :MTKPAssets {
-        get {
-            return computerAssets
-        }
-    }
+    let assets:MTKPAssets
+    let commandQueue:MTLCommandQueue
     
     init(assets:MTKPAssets) {
-        computerAssets = assets
+        guard let commandQueue =  MTKPDevice.instance.device.makeCommandQueue() else {
+            fatalError()
+        }
+        
+        self.commandQueue = commandQueue
+        self.assets = assets
     }
 }
 
@@ -37,6 +37,8 @@ class MTKPComputerTest: XCTestCase {
     func testInit() {
         let assets = MTKPAssets()
         let testComputer = MTKPTestComputer(assets: assets)
+        
+        XCTAssert(testComputer.assets != nil)
+        XCTAssert(testComputer.commandQueue != nil)
     }
-
 }

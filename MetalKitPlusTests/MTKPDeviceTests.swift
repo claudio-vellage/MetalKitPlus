@@ -17,9 +17,7 @@
 
 import XCTest
 
-struct MTKDeviceTestUser : MTKPDeviceUser {}
-
-class MTKPDeviceUserTests: XCTestCase {
+class MTKPDeviceTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -35,17 +33,14 @@ class MTKPDeviceUserTests: XCTestCase {
     func testCreation() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let testUser = MTKDeviceTestUser()
-        
-        XCTAssert(testUser.device != nil)
+        XCTAssert(MTKPDevice.instance.device != nil)
     }
     
     func testSingletonMTLDevice() {
-        let testUser1 = MTKDeviceTestUser()
-        let testUser2 = MTKDeviceTestUser()
+        let testUser1 = MTKPDevice.instance
+        let testUser2 = MTKPDevice.instance
         
-        XCTAssert(testUser1.device === testUser2.device)
+        XCTAssert(testUser1 === testUser2)
     }
 
 }

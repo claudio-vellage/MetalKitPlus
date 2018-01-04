@@ -31,7 +31,7 @@ public protocol MTKPMeshDescriptor {
     var indexType: MTLIndexType! { get set }
 }
 
-public struct MTKPCubeDescriptor : MTKPMeshDescriptor, MTKPDeviceUser {
+public struct MTKPCubeDescriptor : MTKPMeshDescriptor {
     public var vertexBuffer: MTLBuffer! = nil
     public var vertexDescriptor: MTLVertexDescriptor! = nil
     public var primitiveType: MTLPrimitiveType! = nil
@@ -40,11 +40,7 @@ public struct MTKPCubeDescriptor : MTKPMeshDescriptor, MTKPDeviceUser {
     public var indexType: MTLIndexType! = nil
     
     public init?(cubeWithSize size: Float) {
-        guard let device = self.device else {
-            fatalError("The device has not been initialized")
-        }
-        
-        let allocator = MTKMeshBufferAllocator(device: device)
+        let allocator = MTKMeshBufferAllocator(device: MTKPDevice.instance.device)
     
         let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),
         segments: vector_uint3(10, 10, 10),
@@ -53,7 +49,7 @@ public struct MTKPCubeDescriptor : MTKPMeshDescriptor, MTKPDeviceUser {
         allocator: allocator)
     
         do {
-            let mtkMesh = try MTKMesh(mesh: mdlMesh, device: device)
+            let mtkMesh = try MTKMesh(mesh: mdlMesh, device: MTKPDevice.instance.device)
             let mtkVertexBuffer = mtkMesh.vertexBuffers[0]
             let submesh = mtkMesh.submeshes[0]
             let mtkIndexBuffer = submesh.indexBuffer

@@ -39,12 +39,9 @@ public struct MTKPAssets : MTKPAssetDictionary {
     }
     
     public init(_ lookupClass:AnyClass) {
-        guard let device = self.device else {
-            fatalError("The _device_ has not been initialized.")
-        }
-        
         let bundle = Bundle(for: lookupClass)
-        guard let library = try? device.makeDefaultLibrary(bundle: bundle) else {
+        
+        guard let library = try? MTKPDevice.instance.device.makeDefaultLibrary(bundle: bundle) else {
             fatalError("Could not load default library from specified bundle")
         }
         
@@ -56,7 +53,7 @@ public struct MTKPAssets : MTKPAssetDictionary {
  * Every MTKPAssetDictionary uses a Metal device and library to compile the shaders.
  */
 
-public protocol MTKPAssetDictionary : MTKPDeviceUser, MTKPLibraryUser {
+public protocol MTKPAssetDictionary : MTKPLibraryUser {
     var dictionary:Dictionary<String,MTKPPipelineStateDescriptor>? { get set }
     
     subscript(key:String) -> MTKPPipelineStateDescriptor? { get set }
@@ -81,12 +78,12 @@ public extension MTKPAssetDictionary {
     }
 
     public mutating func add(shader:MTKPShader) {
-        guard let function = library!.makeFunction(name: shader.name), let device = self.device else {
+        guard let function = library!.makeFunction(name: shader.name) else {
             fatalError("The _function_ has not been initialized.")
         }
     
         do {
-            let computePipelineState = try device.makeComputePipelineState(function: function)
+            let computePipelineState = try MTKPDevice.instance.device.makeComputePipelineState(function: function)
         
             self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,

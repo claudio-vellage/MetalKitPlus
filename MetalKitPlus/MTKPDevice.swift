@@ -19,24 +19,18 @@ import Metal
 
 private let _instance = MTKPDevice()
 
-fileprivate class MTKPDevice {
-    var device:MTLDevice?
+public class MTKPDevice {
+    var device:MTLDevice
     
-    init(device:MTLDevice? = MTLCreateSystemDefaultDevice()) {
+    fileprivate init(device:MTLDevice? = MTLCreateSystemDefaultDevice()) {
+        guard let device = device else {
+            fatalError()
+        }
+        
         self.device = device
     }
     
     public class var instance : MTKPDevice {
         return _instance
-    }
-}
-
-public protocol MTKPDeviceUser {
-    var device:MTLDevice? { get }
-}
-
-extension MTKPDeviceUser {
-    public var device:MTLDevice? {
-        return MTKPDevice.instance.device
     }
 }

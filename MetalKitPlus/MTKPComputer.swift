@@ -21,8 +21,10 @@ import Metal
  * An MTKPComputer allows the user to encode shaders for a given command queue.
  */
 
-public protocol MTKPComputer : MTKPShaderEncoder, MTKPCommandQueueUser, MTKPAssetUser {}
-
+public protocol MTKPComputer : MTKPShaderEncoder {
+    var assets:MTKPAssets { get }
+    var commandQueue:MTLCommandQueue { get }
+}
 
 /**
  * Default implementation for a simple image processing computer.
