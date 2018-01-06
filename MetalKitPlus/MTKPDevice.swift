@@ -30,7 +30,7 @@ public class MTKPDevice {
         self.device = device
     }
     
-    public class var instance : MTKPDevice {
-        return _instance
+    public class var instance : MTLDevice {
+        return _instance.device
     }
 }
