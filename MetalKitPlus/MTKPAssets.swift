@@ -41,7 +41,7 @@ public struct MTKPAssets : MTKPAssetDictionary {
     public init(_ lookupClass:AnyClass) {
         let bundle = Bundle(for: lookupClass)
         
-        guard let library = try? MTKPDevice.instance.device.makeDefaultLibrary(bundle: bundle) else {
+        guard let library = try? MTKPDevice.device.makeDefaultLibrary(bundle: bundle) else {
             fatalError("Could not load default library from specified bundle")
         }
         
@@ -83,10 +83,11 @@ public extension MTKPAssetDictionary {
         }
     
         do {
-            let computePipelineState = try MTKPDevice.instance.device.makeComputePipelineState(function: function)
+            let computePipelineState = try MTKPDevice.device.makeComputePipelineState(function: function)
             
             self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,
+                tgConfig: shader.tgConfig,
                 textures:shader.io.fetchTextures(),
                 buffers:shader.io.fetchBuffers()
             )

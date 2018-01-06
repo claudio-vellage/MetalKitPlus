@@ -23,7 +23,6 @@ import Metal
 
 public protocol MTKPComputer : MTKPShaderEncoder {
     var assets:MTKPAssets { get }
-    var commandQueue:MTLCommandQueue { get }
 }
 
 /**
@@ -33,7 +32,7 @@ public protocol MTKPComputer : MTKPShaderEncoder {
 public extension MTKPComputer {
     func encode(_ name: String) {
         guard
-            let commandBuffer = commandQueue.makeCommandBuffer(),
+            let commandBuffer = MTKPDevice.commandQueue.makeCommandBuffer(),
             let commandEncoder = commandBuffer.makeComputeCommandEncoder() else {
                 // TODO: Insert proper error message here.
                 fatalError()
@@ -63,11 +62,19 @@ public extension MTKPComputer {
         if let textures = stateDescriptor.textures { commandEncoder.encode(textures) }
         if let buffers = stateDescriptor.buffers { commandEncoder.encode(buffers) }
         /// - todo: Samplers arent supported yet
+
+        let tgConfig = stateDescriptor.tgConfig
+        
+        let tgSize = tgConfig.tgSize
+        
+        tgConfig.tgMemLength?.enumerated().forEach{
+            commandEncoder.setThreadgroupMemoryLength($0, index: $1)
+        }
         
         commandEncoder.dispatchThreadgroups(
-            16,
-            16,
-            1,
+            tgSize.0,
+            tgSize.1,
+            tgSize.2,
             width: width,
             height: height,
             depth: depth

@@ -40,7 +40,7 @@ public struct MTKPCubeDescriptor : MTKPMeshDescriptor {
     public var indexType: MTLIndexType! = nil
     
     public init?(cubeWithSize size: Float) {
-        let allocator = MTKMeshBufferAllocator(device: MTKPDevice.instance.device)
+        let allocator = MTKMeshBufferAllocator(device: MTKPDevice.device)
     
         let mdlMesh = MDLMesh(boxWithExtent: vector_float3(size, size, size),
         segments: vector_uint3(10, 10, 10),
@@ -49,7 +49,7 @@ public struct MTKPCubeDescriptor : MTKPMeshDescriptor {
         allocator: allocator)
     
         do {
-            let mtkMesh = try MTKMesh(mesh: mdlMesh, device: MTKPDevice.instance.device)
+            let mtkMesh = try MTKMesh(mesh: mdlMesh, device: MTKPDevice.device)
             let mtkVertexBuffer = mtkMesh.vertexBuffers[0]
             let submesh = mtkMesh.submeshes[0]
             let mtkIndexBuffer = submesh.indexBuffer
