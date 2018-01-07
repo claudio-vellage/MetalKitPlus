@@ -72,9 +72,9 @@ public extension MTKPComputer {
         }
         
         commandEncoder.dispatchThreadgroups(
-            tgSize.0,
-            tgSize.1,
-            tgSize.2,
+            tgSize.width,
+            tgSize.height,
+            tgSize.depth,
             width: width,
             height: height,
             depth: depth
