@@ -18,15 +18,17 @@
 import Metal
 
 public struct MTKPPipelineData {
-    var tgSize:(Int,Int,Int)?
+    var tgConfig:MTKPThreadgroupConfig
     var textures:[MTLTexture]?
     var buffers:[MTLBuffer]?
     var samplers:[MTLSamplerState]?
     
-    public init(textures:[MTLTexture]?,
+    public init(tgConfig:MTKPThreadgroupConfig,
+                textures:[MTLTexture]?,
                 buffers:[MTLBuffer]?,
                 samplers:[MTLSamplerState]?)
     {
+        self.tgConfig = tgConfig
         self.textures = textures
         self.buffers = buffers
         self.samplers = samplers
@@ -38,6 +40,8 @@ public struct MTKPPipelineData {
  */
 
 public protocol MTKPPipelineStateDescriptor {
+    var tgConfig:MTKPThreadgroupConfig { get }
+    
     var textures:[MTLTexture]? { get set }
     var buffers:[MTLBuffer]? { get set }
     var samplers:[MTLSamplerState]? { get set }
@@ -48,6 +52,12 @@ public protocol MTKPPipelineStateDescriptor {
 }
 
 extension MTKPPipelineStateDescriptor {
+    public var tgConfig:MTKPThreadgroupConfig {
+        get {
+            return data!.tgConfig
+        }
+    }
+    
     public var textures:[MTLTexture]? {
         get {
             return data!.textures
@@ -75,12 +85,13 @@ extension MTKPPipelineStateDescriptor {
         }
     }
     
-    public init(textures:[MTLTexture]?,
+    public init(tgConfig:MTKPThreadgroupConfig,
+                textures:[MTLTexture]?,
                 buffers:[MTLBuffer]?,
                 samplers:[MTLSamplerState]?)
     {
         self.init()
-        self.data = MTKPPipelineData(textures: textures, buffers: buffers, samplers: samplers)
+        self.data = MTKPPipelineData(tgConfig: tgConfig, textures: textures, buffers: buffers, samplers: samplers)
     }
                 
 }
@@ -96,13 +107,13 @@ public struct MTKPRenderPipelineStateDescriptor : MTKPPipelineStateDescriptor {
     
     public init (state:MTLRenderPipelineState,
                  depthStencilState:MTLDepthStencilState,
+                 tgConfig:MTKPThreadgroupConfig,
                  textures:[MTLTexture]? = nil,
                  buffers:[MTLBuffer]? = nil,
                  samplers:[MTLSamplerState]? = nil,
-                 meshes:[MTKPMeshDescriptor]? = nil
-        )
+                 meshes:[MTKPMeshDescriptor]? = nil)
     {
-        self.init(textures: textures, buffers: buffers, samplers: samplers)
+        self.init(tgConfig: tgConfig, textures: textures, buffers: buffers, samplers: samplers)
         
         self.state = state
         self.depthStencilState = depthStencilState
@@ -116,15 +127,15 @@ public struct MTKPComputePipelineStateDescriptor : MTKPPipelineStateDescriptor {
     public var data: MTKPPipelineData? = nil
     
     public private(set) var state:MTLComputePipelineState? = nil
-    public private(set) var tgMemLength:Int? = nil
     
     public init (state:MTLComputePipelineState,
+                 tgConfig:MTKPThreadgroupConfig,
                  textures:[MTLTexture]? = nil,
                  buffers:[MTLBuffer]? = nil,
                  samplers:[MTLSamplerState]? = nil
         )
     {
-        self.init(textures: textures, buffers: buffers, samplers: samplers)
+        self.init(tgConfig: tgConfig, textures: textures, buffers: buffers, samplers: samplers)
         
         self.state = state
     }

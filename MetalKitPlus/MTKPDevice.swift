@@ -20,7 +20,8 @@ import Metal
 private let _instance = MTKPDevice()
 
 public class MTKPDevice {
-    var device:MTLDevice
+    let device:MTLDevice
+    let commandQueue:MTLCommandQueue
     
     fileprivate init(device:MTLDevice? = MTLCreateSystemDefaultDevice()) {
         guard let device = device else {
@@ -28,9 +29,19 @@ public class MTKPDevice {
         }
         
         self.device = device
+        
+        guard let commandQueue = device.makeCommandQueue() else {
+            fatalError()
+        }
+        
+        self.commandQueue = commandQueue
     }
     
-    public class var instance : MTLDevice {
+    public class var device : MTLDevice {
         return _instance.device
+    }
+    
+    public class var commandQueue : MTLCommandQueue {
+        return _instance.commandQueue
     }
 }

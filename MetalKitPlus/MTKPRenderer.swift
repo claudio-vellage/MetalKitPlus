@@ -24,7 +24,7 @@ public struct MTKPRenderer {
     public private(set) var mtkView:MTKView! = nil
     
     public init(view:MTKView) {
-        guard let commandQueue = MTKPDevice.instance.device.makeCommandQueue() else {
+        guard let commandQueue = MTKPDevice.device.makeCommandQueue() else {
             fatalError("Something went wrong")
         }
         
@@ -33,7 +33,7 @@ public struct MTKPRenderer {
         view.clearColor = MTLClearColorMake(1, 1, 1, 1)
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
-        view.device = MTKPDevice.instance.device
+        view.device = MTKPDevice.device
         
         self.mtkView = view
     }
