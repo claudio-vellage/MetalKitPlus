@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import MetalKitPlus
 
 struct MTKPTestComputer : MTKPComputer {
     let assets:MTKPAssets

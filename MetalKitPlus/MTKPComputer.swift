@@ -19,9 +19,16 @@ import Metal
 
 /**
  * An MTKPComputer allows the user to encode shaders for a given command queue.
+ *
+ * Note: encode() and dispatch() have been moved from MTKPShaderEncoder directly
+ * to MTKPComputer, because MTKPShaderEncoder has only been used by MTKPComputer.
+ * This change could be reverted in later releases, but for now I've opted for the
+ * simpler design.
  */
 
-public protocol MTKPComputer : MTKPShaderEncoder {
+public protocol MTKPComputer {
+    func encode(_ name:String)
+    func dispatch(using commandEncoder:MTLComputeCommandEncoder, stateDescriptor:MTKPComputePipelineStateDescriptor)
     var assets:MTKPAssets { get }
 }
 
@@ -43,33 +50,41 @@ public extension MTKPComputer {
                 fatalError()
         }
         
-        guard
-            let sourceTexture = stateDescriptor.textures?.first,
-            let pipelineState = stateDescriptor.state else {
+        guard let pipelineState = stateDescriptor.state else {
                 // TODO: Insert proper error message here.
                 fatalError()
         }
         
         commandEncoder.pushDebugGroup(name)
-        
-        /// - fixme: Refactor this to be more flexible, i.e. if there are no textures, this will fail
-        let width = sourceTexture.width
-        let height = sourceTexture.height
-        let depth = 1
-        
         commandEncoder.setComputePipelineState(pipelineState)
         
         if let textures = stateDescriptor.textures { commandEncoder.encode(textures) }
         if let buffers = stateDescriptor.buffers { commandEncoder.encode(buffers) }
         /// - todo: Samplers arent supported yet
 
-        let tgConfig = stateDescriptor.tgConfig
-        
-        let tgSize = tgConfig.tgSize
-        
-        tgConfig.tgMemLength?.enumerated().forEach{
+        // Consider moving this step to its own function.
+        stateDescriptor.tgConfig.tgMemLength?.enumerated().forEach{
             commandEncoder.setThreadgroupMemoryLength($0, index: $1)
         }
+        
+        self.dispatch(using: commandEncoder, stateDescriptor: stateDescriptor)
+
+        commandEncoder.popDebugGroup()
+        commandEncoder.endEncoding()
+        
+        commandBuffer.commit()
+    }
+    
+    func dispatch(using commandEncoder:MTLComputeCommandEncoder, stateDescriptor:MTKPComputePipelineStateDescriptor) {
+        guard let sourceTexture = stateDescriptor.textures?.first else {
+            fatalError()
+        }
+        
+        let width = sourceTexture.width
+        let height = sourceTexture.height
+        let depth = 1
+        
+        let tgSize = stateDescriptor.tgConfig.tgSize
         
         commandEncoder.dispatchThreadgroups(
             tgSize.width,
@@ -80,10 +95,6 @@ public extension MTKPComputer {
             depth: depth
         )
         
-        commandEncoder.popDebugGroup()
-        commandEncoder.endEncoding()
-        
-        commandBuffer.commit()
     }
 }
 
