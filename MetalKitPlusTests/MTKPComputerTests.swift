@@ -31,7 +31,5 @@ class MTKPComputerTest: XCTestCase {
     func testInit() {
         let assets = MTKPAssets()
         let testComputer = MTKPTestComputer(assets: assets)
-        
-        XCTAssert(testComputer.assets != nil)
     }
 }

@@ -19,63 +19,48 @@ import Metal
 
 /**
  * An MTKPComputer allows the user to encode shaders for a given command queue.
- *
- * Note: encode() and dispatch() have been moved from MTKPShaderEncoder directly
- * to MTKPComputer, because MTKPShaderEncoder has only been used by MTKPComputer.
- * This change could be reverted in later releases, but for now I've opted for the
- * simpler design.
  */
-
 public protocol MTKPComputer {
     func encode(_ name:String)
-    func dispatch(using commandEncoder:MTLComputeCommandEncoder, stateDescriptor:MTKPComputePipelineStateDescriptor)
     var assets:MTKPAssets { get }
 }
 
 /**
  * Default implementation for a simple image processing computer.
  */
-
 public extension MTKPComputer {
     func encode(_ name: String) {
         guard
             let commandBuffer = MTKPDevice.commandQueue.makeCommandBuffer(),
-            let commandEncoder = commandBuffer.makeComputeCommandEncoder() else {
-                // TODO: Insert proper error message here.
+            let commandEncoder = commandBuffer.makeComputeCommandEncoder(),
+            let stateDescriptor = assets[name] as? MTKPComputePipelineStateDescriptor,
+            let pipelineState = stateDescriptor.state else {
                 fatalError()
         }
         
-        guard let stateDescriptor = assets[name] as? MTKPComputePipelineStateDescriptor else {
-                // TODO: Insert proper error message here.
-                fatalError()
-        }
-        
-        guard let pipelineState = stateDescriptor.state else {
-                // TODO: Insert proper error message here.
-                fatalError()
-        }
-        
-        commandEncoder.pushDebugGroup(name)
         commandEncoder.setComputePipelineState(pipelineState)
-        
-        if let textures = stateDescriptor.textures { commandEncoder.encode(textures) }
-        if let buffers = stateDescriptor.buffers { commandEncoder.encode(buffers) }
-        /// - todo: Samplers arent supported yet
-
-        // Consider moving this step to its own function.
-        stateDescriptor.tgConfig.tgMemLength?.enumerated().forEach{
-            commandEncoder.setThreadgroupMemoryLength($0, index: $1)
-        }
-        
-        self.dispatch(using: commandEncoder, stateDescriptor: stateDescriptor)
-
-        commandEncoder.popDebugGroup()
+        commandEncoder.encode(stateDescriptor: stateDescriptor)
+        commandEncoder.dispatch(stateDescriptor: stateDescriptor)
         commandEncoder.endEncoding()
         
         commandBuffer.commit()
     }
+}
+
+/**
+ * Convenience extensions for MTLComputeCommandEncoder
+ */
+extension MTLComputeCommandEncoder {
+    func encode(stateDescriptor:MTKPComputePipelineStateDescriptor) {
+        if let textures = stateDescriptor.textures { self.encode(textures) }
+        if let buffers = stateDescriptor.buffers { self.encode(buffers) }
+        
+        stateDescriptor.tgConfig.tgMemLength?.enumerated().forEach{
+            self.setThreadgroupMemoryLength($0, index: $1)
+        }
+    }
     
-    func dispatch(using commandEncoder:MTLComputeCommandEncoder, stateDescriptor:MTKPComputePipelineStateDescriptor) {
+    func dispatch(stateDescriptor:MTKPComputePipelineStateDescriptor) {
         guard let sourceTexture = stateDescriptor.textures?.first else {
             fatalError()
         }
@@ -86,7 +71,7 @@ public extension MTKPComputer {
         
         let tgSize = stateDescriptor.tgConfig.tgSize
         
-        commandEncoder.dispatchThreadgroups(
+        self.dispatchThreadgroups(
             tgSize.width,
             tgSize.height,
             tgSize.depth,
@@ -94,17 +79,10 @@ public extension MTKPComputer {
             height: height,
             depth: depth
         )
-        
     }
-}
-
-/**
- * Convenience extensions for MTLComputeCommandEncoder
- */
-
-extension MTLComputeCommandEncoder {
+    
     /// Convenience method to create `x * y * z` threads per `width / x * height / y * depth / z` threadgroups.
-    func dispatchThreadgroups(_ x:Int, _ y:Int, _ z:Int, width:Int, height:Int, depth:Int) {
+    private func dispatchThreadgroups(_ x:Int, _ y:Int, _ z:Int, width:Int, height:Int, depth:Int) {
         guard x > 0, y > 0, z > 0, width > 0, height > 0, depth > 0 else {
             fatalError("One of the parameters has been <= 0")
         }
@@ -116,7 +94,7 @@ extension MTLComputeCommandEncoder {
     }
     
     /// Encodes an array of textures and sets the index according to the order in given array starting from 0. It's recommended to have the order of the textures in this array match the order used in the shader.
-    func encode(_ textures:[MTLTexture]) {
+    private func encode(_ textures:[MTLTexture]) {
         textures.enumerated().forEach{(arg: (offset: Int, element: MTLTexture)) -> () in
             let (index, texture) = arg
             self.setTexture(texture, index: index)
@@ -124,7 +102,7 @@ extension MTLComputeCommandEncoder {
     }
     
     /// Encodes an array of textures and sets the index according to the order in given array starting from 0. It's recommended to have the order of the textures in this array match the order used in the shader.
-    func encode(_ buffers:[MTLBuffer]) {
+    private func encode(_ buffers:[MTLBuffer]) {
         buffers.enumerated().forEach{(arg: (offset: Int, element: MTLBuffer)) -> () in
             let (index, buffer) = arg
             self.setBuffer(buffer, offset: 0, index: index)
