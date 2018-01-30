@@ -61,8 +61,8 @@ extension MTLComputeCommandEncoder {
     }
     
     func dispatch(stateDescriptor:MTKPComputePipelineStateDescriptor) {
-        guard let sourceTexture = stateDescriptor.textures?.first else {
-            fatalError()
+        guard let sourceTexture = stateDescriptor.textures?.first! else {
+            fatalError("The source texture was nil during dispatch")
         }
         
         let width = sourceTexture.width

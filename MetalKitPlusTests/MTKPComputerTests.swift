@@ -16,7 +16,7 @@ struct MTKPTestComputer : MTKPComputer {
     }
 }
 
-class MTKPComputerTest: XCTestCase {
+class MTKPComputerTest : XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -34,8 +34,8 @@ class MTKPComputerTest: XCTestCase {
     }
     
     func testEncodeFunction() {
-        var assets = MTKPAssets(toGrayShaderIO.self)
-        assets.add(shader: MTKPShader(name: "toGray", io: toGrayShaderIO()))
+        var assets = MTKPAssets(ToGrayShaderIO.self)
+        assets.add(shader: MTKPShader(name: "toGray", io: ToGrayShaderIO()))
         
         let computer = MTKPTestComputer(assets: assets)
         computer.encode("toGray")

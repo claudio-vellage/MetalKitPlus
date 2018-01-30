@@ -33,15 +33,15 @@ class MTKPDeviceTests: XCTestCase {
     func testCreation() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertNotNil(MTKPDevice.device)
+        XCTAssertNotNil(MTKPDevice.instance)
         XCTAssertNotNil(MTKPDevice.commandQueue)
     }
     
     func testSingletonMTLDevice() {
-        let testUser1 = MTKPDevice.device
-        let testUser2 = MTKPDevice.device
+        let testInstance1 = MTKPDevice.instance
+        let testInstance2 = MTKPDevice.instance
         
-        XCTAssert(testUser1 === testUser2)
+        XCTAssert(testInstance1 === testInstance2)
     }
 
     func testSingletonMTLCommandQueue() {

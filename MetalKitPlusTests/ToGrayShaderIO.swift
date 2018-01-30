@@ -9,7 +9,7 @@
 import MetalKit
 import MetalKitPlus
 
-final class toGrayShaderIO: MTKPIOProvider {
+final class ToGrayShaderIO : MTKPIOProvider {
     
     private let inTexture:MTLTexture
     private let outTexture:MTLTexture
@@ -23,10 +23,10 @@ final class toGrayShaderIO: MTKPIOProvider {
         descriptor.storageMode = .private
         descriptor.usage = .unknown
         
-        guard let inTexture = MTKPDevice.device.makeTexture(descriptor: descriptor) else {
+        guard let inTexture = MTKPDevice.instance.makeTexture(descriptor: descriptor) else {
             fatalError("Texture could not be made.")
         }
-        guard let outTexture = MTKPDevice.device.makeTexture(descriptor: descriptor) else {
+        guard let outTexture = MTKPDevice.instance.makeTexture(descriptor: descriptor) else {
             fatalError("Texture could not be made.")
         }
         
@@ -34,7 +34,7 @@ final class toGrayShaderIO: MTKPIOProvider {
         self.outTexture = outTexture
     }
     
-    func fetchTextures() -> [MTLTexture]? {
+    func fetchTextures() -> [MTLTexture?]? {
         return [inTexture, outTexture]
     }
     

@@ -19,14 +19,14 @@ import Metal
 
 public struct MTKPPipelineData {
     var tgConfig:MTKPThreadgroupConfig
-    var textures:[MTLTexture]?
+    var textures:[MTLTexture?]?
     var buffers:[MTLBuffer]?
-    var samplers:[MTLSamplerState]?
+    var samplers:[MTLSamplerState?]?
     
     public init(tgConfig:MTKPThreadgroupConfig,
-                textures:[MTLTexture]?,
+                textures:[MTLTexture?]?,
                 buffers:[MTLBuffer]?,
-                samplers:[MTLSamplerState]?)
+                samplers:[MTLSamplerState?]?)
     {
         self.tgConfig = tgConfig
         self.textures = textures
@@ -42,9 +42,9 @@ public struct MTKPPipelineData {
 public protocol MTKPPipelineStateDescriptor {
     var tgConfig:MTKPThreadgroupConfig { get }
     
-    var textures:[MTLTexture]? { get set }
+    var textures:[MTLTexture?]? { get set }
     var buffers:[MTLBuffer]? { get set }
-    var samplers:[MTLSamplerState]? { get set }
+    var samplers:[MTLSamplerState?]? { get set }
     
     var data:MTKPPipelineData? { get set }
     
@@ -58,7 +58,7 @@ extension MTKPPipelineStateDescriptor {
         }
     }
     
-    public var textures:[MTLTexture]? {
+    public var textures:[MTLTexture?]? {
         get {
             return data!.textures
         }
@@ -76,7 +76,7 @@ extension MTKPPipelineStateDescriptor {
         }
     }
     
-    public var samplers:[MTLSamplerState]? {
+    public var samplers:[MTLSamplerState?]? {
         get {
             return data!.samplers
         }
@@ -86,9 +86,9 @@ extension MTKPPipelineStateDescriptor {
     }
     
     public init(tgConfig:MTKPThreadgroupConfig,
-                textures:[MTLTexture]?,
+                textures:[MTLTexture?]?,
                 buffers:[MTLBuffer]?,
-                samplers:[MTLSamplerState]?)
+                samplers:[MTLSamplerState?]?)
     {
         self.init()
         self.data = MTKPPipelineData(tgConfig: tgConfig, textures: textures, buffers: buffers, samplers: samplers)
@@ -130,9 +130,9 @@ public struct MTKPComputePipelineStateDescriptor : MTKPPipelineStateDescriptor {
     
     public init (state:MTLComputePipelineState,
                  tgConfig:MTKPThreadgroupConfig,
-                 textures:[MTLTexture]? = nil,
+                 textures:[MTLTexture?]? = nil,
                  buffers:[MTLBuffer]? = nil,
-                 samplers:[MTLSamplerState]? = nil
+                 samplers:[MTLSamplerState?]? = nil
         )
     {
         self.init(tgConfig: tgConfig, textures: textures, buffers: buffers, samplers: samplers)
