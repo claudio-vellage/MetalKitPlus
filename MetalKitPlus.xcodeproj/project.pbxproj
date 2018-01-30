@@ -92,10 +92,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */ = {
+		177BF6102020016800173CAF /* New Group */ = {
 			isa = PBXGroup;
 			children = (
 				31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				177BF6102020016800173CAF /* New Group */,
 				31E84D1F1FF5393900981293 /* MTKPComputerTests.swift */,
 				310DCAE11F5C44B40090A6E8 /* MTKPDeviceTests.swift */,
 				310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */,

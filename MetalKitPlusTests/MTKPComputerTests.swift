@@ -32,4 +32,12 @@ class MTKPComputerTest: XCTestCase {
         let assets = MTKPAssets()
         let testComputer = MTKPTestComputer(assets: assets)
     }
+    
+    func testEncodeFunction() {
+        var assets = MTKPAssets(toGrayShaderIO.self)
+        assets.add(shader: MTKPShader(name: "toGray", io: toGrayShaderIO()))
+        
+        let computer = MTKPTestComputer(assets: assets)
+        computer.encode("toGray")
+    }
 }
