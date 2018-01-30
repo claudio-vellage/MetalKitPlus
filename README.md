@@ -3,6 +3,8 @@ Framework for rapid development of Metal applications, extending Apple's MetalKi
 
 ## Roadmap
 
+We've started working on the following in our dev/v2.0.0 branch:
+
  - Add documentation
  - Write tests
  - Metal 2 Support
