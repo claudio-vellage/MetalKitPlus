@@ -41,9 +41,7 @@ public struct MTKPAssets : MTKPAssetDictionary {
     public init(_ lookupClass:AnyClass) {
         let bundle = Bundle(for: lookupClass)
         
-        guard let library = try? MTKPDevice.device.makeDefaultLibrary(bundle: bundle) else {
-            fatalError("Could not load default library from specified bundle")
-        }
+        let library = (try? MTKPDevice.device.makeDefaultLibrary(bundle: bundle)) ?? MTKPDevice.device.makeDefaultLibrary()
         
         self.library = library
     }
