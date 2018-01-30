@@ -52,8 +52,8 @@ public extension MTKPComputer {
  */
 extension MTLComputeCommandEncoder {
     func encode(stateDescriptor:MTKPComputePipelineStateDescriptor) {
-        if let textures = stateDescriptor.textures { self.encode(textures) }
-        if let buffers = stateDescriptor.buffers { self.encode(buffers) }
+        if let textures = stateDescriptor.textures { self.setTextures(textures, range: 0..<textures.count) }
+        if let buffers = stateDescriptor.buffers { self.setBuffers(buffers, offsets: [Int](repeating: 0, count: buffers.count), range: 0..<buffers.count) }
         
         stateDescriptor.tgConfig.tgMemLength?.enumerated().forEach{
             self.setThreadgroupMemoryLength($0, index: $1)
@@ -92,22 +92,4 @@ extension MTLComputeCommandEncoder {
         
         self.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
     }
-    
-    /// Encodes an array of textures and sets the index according to the order in given array starting from 0. It's recommended to have the order of the textures in this array match the order used in the shader.
-    private func encode(_ textures:[MTLTexture]) {
-        textures.enumerated().forEach{(arg: (offset: Int, element: MTLTexture)) -> () in
-            let (index, texture) = arg
-            self.setTexture(texture, index: index)
-        }
-    }
-    
-    /// Encodes an array of textures and sets the index according to the order in given array starting from 0. It's recommended to have the order of the textures in this array match the order used in the shader.
-    private func encode(_ buffers:[MTLBuffer]) {
-        buffers.enumerated().forEach{(arg: (offset: Int, element: MTLBuffer)) -> () in
-            let (index, buffer) = arg
-            self.setBuffer(buffer, offset: 0, index: index)
-        }
-    }
-    
-    /// - todo: Encoder for samplers is missing
 }
