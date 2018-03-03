@@ -19,7 +19,7 @@ import Metal
 
 private let _instance = MTKPDevice()
 
-public class MTKPDevice {
+public final class MTKPDevice {
     let device:MTLDevice
     let commandQueue:MTLCommandQueue
     
@@ -37,7 +37,7 @@ public class MTKPDevice {
         self.commandQueue = commandQueue
     }
     
-    public class var device : MTLDevice {
+    public class var instance : MTLDevice {
         return _instance.device
     }
     

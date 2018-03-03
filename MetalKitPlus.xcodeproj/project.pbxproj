@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		310DCAE31F5C46B00090A6E8 /* MTKPCubeDescriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */; };
-		310DCAE91F5C78140090A6E8 /* MTKPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */; };
 		3123C46D1FF45BDE005507A1 /* MTKPShaderLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3123C46C1FF45BDD005507A1 /* MTKPShaderLookup.swift */; };
 		3123C46F1FF45CA6005507A1 /* MTKPComputer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3123C46E1FF45CA6005507A1 /* MTKPComputer.swift */; };
 		3163E6612006F81C007C7B19 /* MTKPAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00C9D1DD8F2DF00C47BE5 /* MTKPAssets.swift */; };
@@ -20,7 +19,6 @@
 		3163E6672006F82F007C7B19 /* MTKPRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA31DD8F2DF00C47BE5 /* MTKPRenderer.swift */; };
 		3163E6682006F832007C7B19 /* MTKPDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BBCFDA1E69CF5700C8B718 /* MTKPDevice.swift */; };
 		3163E6692006F834007C7B19 /* MTKPShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F84F11E6C6181009B073D /* MTKPShader.swift */; };
-		3163E66A2006F836007C7B19 /* MTKPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */; };
 		3163E66B2006F838007C7B19 /* MTKPThreadgroupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DE9C22000660100D53195 /* MTKPThreadgroupConfig.swift */; };
 		316F84F21E6C6181009B073D /* MTKPShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F84F11E6C6181009B073D /* MTKPShader.swift */; };
 		317DE9C32000660100D53195 /* MTKPThreadgroupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DE9C22000660100D53195 /* MTKPThreadgroupConfig.swift */; };
@@ -35,6 +33,7 @@
 		31E00CAA1DD8F2DF00C47BE5 /* MTKPPipelineStateDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA21DD8F2DF00C47BE5 /* MTKPPipelineStateDescriptor.swift */; };
 		31E00CAB1DD8F2DF00C47BE5 /* MTKPRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00CA31DD8F2DF00C47BE5 /* MTKPRenderer.swift */; };
 		31E84D201FF5393900981293 /* MTKPComputerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E84D1F1FF5393900981293 /* MTKPComputerTests.swift */; };
+		31F7610E2020681A0093B7B8 /* ToGray.metal in Sources */ = {isa = PBXBuildFile; fileRef = 31CE05481F5CB0B2007D7C4E /* ToGray.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 /* Begin PBXFileReference section */
 		310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPCubeDescriptorTests.swift; sourceTree = "<group>"; };
 		310DCAE11F5C44B40090A6E8 /* MTKPDeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPDeviceTests.swift; sourceTree = "<group>"; };
-		310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPLibrary.swift; sourceTree = "<group>"; };
 		3123C46C1FF45BDD005507A1 /* MTKPShaderLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKPShaderLookup.swift; sourceTree = "<group>"; };
 		3123C46E1FF45CA6005507A1 /* MTKPComputer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPComputer.swift; sourceTree = "<group>"; };
 		316F84F11E6C6181009B073D /* MTKPShader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKPShader.swift; sourceTree = "<group>"; };
@@ -61,7 +59,7 @@
 		31CE05361F5CA1DB007D7C4E /* MTKPAssetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKPAssetsTests.swift; sourceTree = "<group>"; };
 		31CE05401F5CAE9D007D7C4E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		31CE05421F5CAEA5007D7C4E /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
-		31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MTKPTestShaders.metal; sourceTree = "<group>"; };
+		31CE05481F5CB0B2007D7C4E /* ToGray.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ToGray.metal; sourceTree = "<group>"; };
 		31E00C7E1DD8F12B00C47BE5 /* MetalKitPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetalKitPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E00C811DD8F12B00C47BE5 /* MetalKitPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalKitPlus.h; sourceTree = "<group>"; };
 		31E00C821DD8F12B00C47BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +93,7 @@
 		31BBCFCE1E69C9C100C8B718 /* MetalKitPlusTests */ = {
 			isa = PBXGroup;
 			children = (
-				31CE05481F5CB0B2007D7C4E /* MTKPTestShaders.metal */,
+				31CE05481F5CB0B2007D7C4E /* ToGray.metal */,
 				31E84D1F1FF5393900981293 /* MTKPComputerTests.swift */,
 				310DCAE11F5C44B40090A6E8 /* MTKPDeviceTests.swift */,
 				310DCAE01F5C44B40090A6E8 /* MTKPCubeDescriptorTests.swift */,
@@ -147,7 +145,6 @@
 				31E00C821DD8F12B00C47BE5 /* Info.plist */,
 				31BBCFDA1E69CF5700C8B718 /* MTKPDevice.swift */,
 				316F84F11E6C6181009B073D /* MTKPShader.swift */,
-				310DCAE81F5C78140090A6E8 /* MTKPLibrary.swift */,
 				317DE9C22000660100D53195 /* MTKPThreadgroupConfig.swift */,
 			);
 			path = MetalKitPlus;
@@ -269,7 +266,6 @@
 				3163E6632006F826007C7B19 /* MTKPComputer.swift in Sources */,
 				3163E6622006F823007C7B19 /* MTKPIOProvider.swift in Sources */,
 				31E84D201FF5393900981293 /* MTKPComputerTests.swift in Sources */,
-				3163E66A2006F836007C7B19 /* MTKPLibrary.swift in Sources */,
 				3163E6692006F834007C7B19 /* MTKPShader.swift in Sources */,
 				3163E6612006F81C007C7B19 /* MTKPAssets.swift in Sources */,
 				3163E6672006F82F007C7B19 /* MTKPRenderer.swift in Sources */,
@@ -281,6 +277,7 @@
 				3163E6662006F82D007C7B19 /* MTKPPipelineStateDescriptor.swift in Sources */,
 				310DCAE31F5C46B00090A6E8 /* MTKPCubeDescriptorTests.swift in Sources */,
 				3163E6682006F832007C7B19 /* MTKPDevice.swift in Sources */,
+				31F7610E2020681A0093B7B8 /* ToGray.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +290,6 @@
 				3123C46D1FF45BDE005507A1 /* MTKPShaderLookup.swift in Sources */,
 				31E00CAA1DD8F2DF00C47BE5 /* MTKPPipelineStateDescriptor.swift in Sources */,
 				3123C46F1FF45CA6005507A1 /* MTKPComputer.swift in Sources */,
-				310DCAE91F5C78140090A6E8 /* MTKPLibrary.swift in Sources */,
 				31CE05701F5CC67C007D7C4E /* MTKPIOProvider.swift in Sources */,
 				31E00CAB1DD8F2DF00C47BE5 /* MTKPRenderer.swift in Sources */,
 				31E00CA51DD8F2DF00C47BE5 /* MTKPAssets.swift in Sources */,

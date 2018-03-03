@@ -29,7 +29,6 @@ import Metal
  *
  * You usually want to retrieve the stateDescriptors prior to encoding your Metal command.
  */
-
 public struct MTKPAssets : MTKPAssetDictionary {
     public var dictionary: Dictionary<String, MTKPPipelineStateDescriptor>? = [:]
     public var library: MTLLibrary? = nil
@@ -41,7 +40,7 @@ public struct MTKPAssets : MTKPAssetDictionary {
     public init(_ lookupClass:AnyClass) {
         let bundle = Bundle(for: lookupClass)
         
-        let library = (try? MTKPDevice.device.makeDefaultLibrary(bundle: bundle)) ?? MTKPDevice.device.makeDefaultLibrary()
+        let library = (try? MTKPDevice.instance.makeDefaultLibrary(bundle: bundle)) ?? MTKPDevice.instance.makeDefaultLibrary()
         
         self.library = library
     }
@@ -50,9 +49,9 @@ public struct MTKPAssets : MTKPAssetDictionary {
 /**
  * Every MTKPAssetDictionary uses a Metal device and library to compile the shaders.
  */
-
-public protocol MTKPAssetDictionary : MTKPLibraryUser {
+public protocol MTKPAssetDictionary {
     var dictionary:Dictionary<String,MTKPPipelineStateDescriptor>? { get set }
+    var library: MTLLibrary? { get set }
     
     subscript(key:String) -> MTKPPipelineStateDescriptor? { get set }
     
@@ -63,7 +62,6 @@ public protocol MTKPAssetDictionary : MTKPLibraryUser {
  * This extension provides a default implementation to add functions to the
  * assets.
  */
-
 public extension MTKPAssetDictionary {
     public subscript(key:String) -> MTKPPipelineStateDescriptor? {
         get {
@@ -81,7 +79,7 @@ public extension MTKPAssetDictionary {
         }
     
         do {
-            let computePipelineState = try MTKPDevice.device.makeComputePipelineState(function: function)
+            let computePipelineState = try MTKPDevice.instance.makeComputePipelineState(function: function)
             
             self[shader.name] = MTKPComputePipelineStateDescriptor(
                 state:computePipelineState,
@@ -93,12 +91,4 @@ public extension MTKPAssetDictionary {
             fatalError("Unexpected error ocurred: \(error.localizedDescription).")
         }
     }
-}
-
-/**
- * All structs that need access to assets, should conform to this protocol.
- */
-
-public protocol MTKPAssetUser {
-    var assets:MTKPAssets { get }
 }
