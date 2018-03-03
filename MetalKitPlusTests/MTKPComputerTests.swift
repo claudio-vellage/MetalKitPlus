@@ -8,6 +8,40 @@
 
 import XCTest
 
+struct ToGrayIOProvider : MTKPIOProvider {
+    
+    private let inTexture:MTLTexture
+    private let outTexture:MTLTexture
+    
+    init(){
+        let descriptor = MTLTextureDescriptor()
+        descriptor.width = 256
+        descriptor.height = 256
+        descriptor.textureType = .type2D
+        descriptor.pixelFormat = .rgba8Unorm
+        descriptor.storageMode = .private
+        descriptor.usage = .unknown
+        
+        guard let inTexture = MTKPDevice.instance.makeTexture(descriptor: descriptor) else {
+            fatalError("Texture could not be made.")
+        }
+        guard let outTexture = MTKPDevice.instance.makeTexture(descriptor: descriptor) else {
+            fatalError("Texture could not be made.")
+        }
+        
+        self.inTexture = inTexture
+        self.outTexture = outTexture
+    }
+    
+    func fetchTextures() -> [MTLTexture?]? {
+        return [inTexture, outTexture]
+    }
+    
+    func fetchBuffers() -> [MTLBuffer]? {
+        return nil
+    }
+}
+
 struct MTKPTestComputer : MTKPComputer {
     let assets:MTKPAssets
     
@@ -30,14 +64,19 @@ class MTKPComputerTest : XCTestCase {
 
     func testInit() {
         let assets = MTKPAssets()
-        let testComputer = MTKPTestComputer(assets: assets)
+        
+        MTKPTestComputer(assets: assets)
+        
+        // TODO: Add an assert here, think about some good assertions
     }
     
     func testEncodeFunction() {
-        var assets = MTKPAssets(ToGrayShaderIO.self)
-        assets.add(shader: MTKPShader(name: "toGray", io: ToGrayShaderIO()))
+        var assets = MTKPAssets()
+        assets.add(shader: MTKPShader(name: "toGray", io: ToGrayIOProvider()))
         
         let computer = MTKPTestComputer(assets: assets)
         computer.encode("toGray")
+        
+        // TODO: Add an assert here, preferably verify the results of the shader
     }
 }
